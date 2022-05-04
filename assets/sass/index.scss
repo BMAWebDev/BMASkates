@@ -1,0 +1,55 @@
+@use 'generale';
+@use 'header';
+
+#page-content {
+  display: grid;
+  grid-template-areas:
+    'prezentare prezentare prezentare'
+    'evenimente orar anunturi'
+    'sponsori sponsori sponsori'
+    'informatii-site utilizatori-online informatii-utilizator';
+
+  #prezentare {
+    grid-area: prezentare;
+  }
+
+  #orar {
+    grid-area: orar;
+  }
+
+  #evenimente {
+    grid-area: evenimente;
+  }
+
+  #anunturi {
+    grid-area: anunturi;
+  }
+
+  #utilizatori-online {
+    grid-area: utilizatori-online;
+  }
+
+  #informatii-utilizator {
+    grid-area: informatii-utilizator;
+  }
+
+  #informatii-site {
+    grid-area: informatii-site;
+  }
+
+  #sponsori {
+    grid-area: sponsori;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-areas:
+      'prezentare prezentare prezentare'
+      'evenimente evenimente evenimente'
+      'orar orar orar'
+      'anunturi anunturi anunturi'
+      'sponsori sponsori sponsori'
+      'informatii-site informatii-site informatii-site'
+      'utilizatori-online utilizatori-online utilizatori-online'
+      'informatii-utilizator informatii-utilizator informatii-utilizator';
+  }
+}

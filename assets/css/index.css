@@ -1,0 +1,49 @@
+* {
+  font: 18px "Helvetica";
+}
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 575px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+#page-content {
+  display: grid;
+  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "informatii-site utilizatori-online informatii-utilizator";
+}
+#page-content #prezentare {
+  grid-area: prezentare;
+}
+#page-content #orar {
+  grid-area: orar;
+}
+#page-content #evenimente {
+  grid-area: evenimente;
+}
+#page-content #anunturi {
+  grid-area: anunturi;
+}
+#page-content #utilizatori-online {
+  grid-area: utilizatori-online;
+}
+#page-content #informatii-utilizator {
+  grid-area: informatii-utilizator;
+}
+#page-content #informatii-site {
+  grid-area: informatii-site;
+}
+#page-content #sponsori {
+  grid-area: sponsori;
+}
+@media screen and (max-width: 768px) {
+  #page-content {
+    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator";
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

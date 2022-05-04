@@ -1,0 +1,1 @@
+etapa 1 nu a putut fi continuata cu etapa 2 deoarece cerintele sunt vagi si imi cer ceva ce eu nu pot implementa pe un site de skateshop (calendar evenimente??, anunturi??, lista tabel etc)

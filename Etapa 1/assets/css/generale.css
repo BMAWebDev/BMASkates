@@ -1,0 +1,12 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+body {
+  --base-color: #28b8d6;
+  --color-1: #e34720;
+  --color-2: #e09a07;
+  --color-3: #64ed21;
+  --color-4: #8d21ed;
+}
