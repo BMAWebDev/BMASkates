@@ -3,6 +3,7 @@
 
 #page-content {
   display: grid;
+  padding-top: 8vh;
   grid-template-areas:
     'prezentare prezentare prezentare'
     'evenimente orar anunturi'
@@ -11,6 +12,11 @@
 
   #prezentare {
     grid-area: prezentare;
+
+    .image-click {
+      position: relative;
+      z-index: -1;
+    }
   }
 
   #orar {

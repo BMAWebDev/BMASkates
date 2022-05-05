@@ -5,6 +5,9 @@ $color_3: #64ed21;
 $color_4: #8d21ed;
 
 * {
+  padding: 0;
+  margin: 0;
+
   font: 18px 'Helvetica';
 
   @media screen and (max-width: 768px) {
@@ -14,4 +17,9 @@ $color_4: #8d21ed;
   @media screen and (max-width: 575px) {
     font-size: 14px;
   }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
