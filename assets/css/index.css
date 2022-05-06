@@ -187,10 +187,39 @@ a {
   }
 }
 
+.goTop-link {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  padding: 15px;
+  border-radius: 25px;
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+}
+.goTop-link .goTop {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid gray;
+  opacity: 0.5;
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(0);
+}
+.goTop-link .goTop:hover {
+  transition: all 1s;
+  transition-property: border-bottom, transform, opacity;
+  transform: translateY(-70%);
+  border-bottom: 10px solid yellow;
+  opacity: 1;
+}
+
 #page-content {
   display: grid;
   padding-top: 8vh;
-  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "informatii-site utilizatori-online informatii-utilizator";
+  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site utilizatori-online informatii-utilizator";
 }
 #page-content #prezentare {
   grid-area: prezentare;
@@ -220,9 +249,36 @@ a {
 #page-content #sponsori {
   grid-area: sponsori;
 }
+#page-content #legends {
+  grid-area: legends;
+  margin: 50px 0;
+}
+#page-content #legends .iframe-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+#page-content #legends .iframe-container .toggle-buttons {
+  z-index: 1;
+  margin-top: 5px;
+  text-align: right;
+  margin-right: 2px;
+}
+#page-content #legends .iframe-container .toggle-buttons .toggle-btn {
+  border: 2px solid rgba(0, 0, 0, 0.1882352941);
+  padding: 5px;
+  border-radius: 0 0 15px 15px;
+  background: rgba(0, 0, 0, 0.1882352941);
+  box-shadow: inset 0px 1px 8px 2px rgba(0, 0, 0, 0.1882352941);
+  transition-duration: 0.7s;
+  transition-property: box-shadow, background;
+}
+#page-content #legends .iframe-container .toggle-buttons .toggle-btn:hover {
+  background: #fff;
+}
 @media screen and (max-width: 768px) {
   #page-content {
-    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator";
+    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator";
   }
 }
 

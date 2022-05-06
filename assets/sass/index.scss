@@ -1,5 +1,6 @@
 @use 'generale';
 @use 'header';
+@use 'topLink';
 
 #page-content {
   display: grid;
@@ -8,6 +9,7 @@
     'prezentare prezentare prezentare'
     'evenimente orar anunturi'
     'sponsori sponsori sponsori'
+    'legends legends legends'
     'informatii-site utilizatori-online informatii-utilizator';
 
   #prezentare {
@@ -47,6 +49,38 @@
     grid-area: sponsori;
   }
 
+  #legends {
+    grid-area: legends;
+    margin: 50px 0;
+
+    .iframe-container {
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+
+      .toggle-buttons {
+        z-index: 1;
+        margin-top: 5px;
+        text-align: right;
+        margin-right: 2px;
+
+        .toggle-btn {
+          border: 2px solid #00000030;
+          padding: 5px;
+          border-radius: 0 0 15px 15px;
+          background: #00000030;
+          box-shadow: inset 0px 1px 8px 2px #00000030;
+          transition-duration: 0.7s;
+          transition-property: box-shadow, background;
+
+          &:hover {
+            background: #fff;
+          }
+        }
+      }
+    }
+  }
+
   @media screen and (max-width: 768px) {
     grid-template-areas:
       'prezentare prezentare prezentare'
@@ -54,6 +88,7 @@
       'orar orar orar'
       'anunturi anunturi anunturi'
       'sponsori sponsori sponsori'
+      'legends legends legends'
       'informatii-site informatii-site informatii-site'
       'utilizatori-online utilizatori-online utilizatori-online'
       'informatii-utilizator informatii-utilizator informatii-utilizator';
