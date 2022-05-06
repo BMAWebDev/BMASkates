@@ -1,3 +1,4 @@
 const acasa = require('./acasa');
+const contact = require('./contact');
 
-module.exports = { acasa };
+module.exports = { acasa, contact };
