@@ -1,3 +1,5 @@
 module.exports = (req, res) => {
-  res.render('pagini/index');
+  res.render('pagini/index', {
+    page: '/index',
+  });
 };

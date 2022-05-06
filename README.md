@@ -16,4 +16,4 @@ I chose this color scheme because I like blue & I think it represents the chosen
 
 ## Run SASS command
 
-`sass --watch assets/sass/index.scss:assets/css/index.css`
+`sass --watch assets/sass:assets/css`

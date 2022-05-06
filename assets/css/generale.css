@@ -1,0 +1,201 @@
+#page-header {
+  z-index: 1;
+  position: fixed;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+}
+#page-header .nav {
+  display: flex;
+  justify-content: space-between;
+}
+#page-header .nav .toggle-menu {
+  display: none;
+  font-size: 32px;
+  margin: 9px 15px;
+}
+@media screen and (max-width: 768px) {
+  #page-header .nav .toggle-menu {
+    display: block;
+  }
+}
+#page-header .nav .nav-list {
+  display: flex;
+  list-style-type: none;
+  width: 25vw;
+  padding: 0;
+}
+#page-header .nav .nav-list li.first-child {
+  position: relative;
+  margin-right: 25px;
+  padding: 15px;
+  text-shadow: 1px -50px 2px;
+  transition: text-shadow 0.7s;
+}
+#page-header .nav .nav-list li.first-child:hover {
+  background: #727072;
+  text-shadow: 1px 1px 2px;
+  transition: text-shadow 0.7s;
+}
+#page-header .nav .nav-list li.first-child ul {
+  position: absolute;
+  padding-left: 0;
+  list-style-type: none;
+  display: none;
+  background-color: #000;
+  left: 0;
+  top: 50px;
+  width: max-content;
+  height: max-content;
+}
+#page-header .nav .nav-list li.first-child ul li {
+  padding: 7px 10px;
+  text-shadow: none;
+  background: rgba(114, 112, 114, 0);
+  transition: background 1s;
+}
+#page-header .nav .nav-list li.first-child ul li:hover {
+  text-decoration: underline;
+  background: #727072;
+  transition: background 1s;
+}
+@media screen and (max-width: 768px) {
+  #page-header .nav .nav-list li.first-child ul {
+    top: 48px;
+  }
+}
+#page-header .nav .nav-list li.first-child:hover ul {
+  display: block;
+  animation-name: animatie_dropdown;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transform-origin: 50% 0;
+}
+@keyframes animatie_dropdown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#page-header .nav .nav-list li.first-child.home-tab .home-text {
+  display: block;
+}
+#page-header .nav .nav-list li.first-child.home-tab .home-icon {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  #page-header .nav .nav-list li.first-child.home-tab .home-text {
+    display: none;
+  }
+  #page-header .nav .nav-list li.first-child.home-tab .home-icon {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  #page-header .nav .nav-list {
+    display: none;
+  }
+}
+#page-header .nav .logo-container .logo {
+  margin: 15px;
+}
+#page-header #toggle-menu-input:checked + .nav {
+  display: flex;
+  flex-direction: column-reverse;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list {
+  display: block;
+  width: 100vw;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child {
+  text-shadow: none;
+  text-align: center;
+  margin-right: 0;
+  animation-name: animatie_dropdown;
+  animation-iteration-count: 1;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transform-origin: 50% 0;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child .selector {
+  padding-bottom: 10px;
+}
+@keyframes animatie_dropdown {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child:hover {
+  padding: 15px 0 0 0;
+  margin-bottom: 15px;
+  z-index: 3;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child:not(:hover) {
+  z-index: 2;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child ul {
+  position: absolute;
+  background: #000;
+  z-index: 1;
+}
+#page-header #toggle-menu-input:checked + .nav .nav-list li.first-child:hover ul {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 10px;
+  animation-name: animatie_dropdown;
+  animation-iteration-count: 1;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  transform-origin: 50% 0;
+}
+@keyframes animatie_dropdown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font: 18px "Helvetica";
+}
+@media screen and (max-width: 768px) {
+  * {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 575px) {
+  * {
+    font-size: 14px;
+  }
+}
+
+.page-content {
+  padding-top: 8vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/*# sourceMappingURL=generale.css.map */
