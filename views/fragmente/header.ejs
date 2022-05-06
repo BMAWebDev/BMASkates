@@ -1,0 +1,40 @@
+<%- include('head.ejs') %>
+
+<header id="page-header">
+  <!-- <div class="logo-container">
+    <h1 class="logo">BMASkates</h1>
+  </div> -->
+  <input type="checkbox" name="toggle-menu-input" id="toggle-menu-input" hidden />
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="first-child home-tab">
+        <div class="home-text">Acasa</div>
+        <i class="fa-solid fa-house home-icon selector"></i>
+        <ul>
+          <li><a href="#prezentare">Ultimul produs</a></li>
+          <li><a href="#orar">Orar</a></li>
+          <li><a href="#evenimente">Evenimente</a></li>
+          <li><a href="#anunturi">Anunturi</a></li>
+          <li><a href="#utilizatori-online">Utilizatori Online</a></li>
+          <li><a href="#informatii-utilizator">Despre mine</a></li>
+          <li><a href="#informatii-site">Despre noi</a></li>
+          <li><a href="#sponsori">Sponsori</a></li>
+        </ul>
+      </li>
+      <li class="first-child">
+        <div class="selector">Magazin</div>
+        <ul>
+          <li><a href="/shop/skate">Skate-uri</a></li>
+          <li><a href="/shop/role">Role</a></li>
+          <li><a href="/shop/snowboard">Snowboard-uri</a></li>
+        </ul>
+      </li>
+      <li class="first-child">
+        <div class="selector">Contact</div>
+      </li>
+    </ul>
+    <label for="toggle-menu-input">
+      <i class="fa-solid fa-bars toggle-menu"></i>
+    </label>
+  </nav>
+</header>

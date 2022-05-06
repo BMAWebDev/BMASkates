@@ -1,0 +1,27 @@
+{
+  "name": "bmaskates",
+  "version": "1.0.0",
+  "description": "proiect tehnici web facultate",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMAWebDev/BMASkates.git"
+  },
+  "author": "Bardita Mihai Andrei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BMAWebDev/BMASkates/issues"
+  },
+  "homepage": "https://github.com/BMAWebDev/BMASkates#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
