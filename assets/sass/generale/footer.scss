@@ -1,4 +1,12 @@
+@use '../variables';
+
 #page-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 15px;
+  margin-top: 25px;
+  box-shadow: 1px -6px 9px -4px variables.$primary_color;
+
   @media print {
     page-break-before: always;
   }

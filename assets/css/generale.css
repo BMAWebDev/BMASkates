@@ -178,6 +178,13 @@
   }
 }
 
+#page-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 15px;
+  margin-top: 25px;
+  box-shadow: 1px -6px 9px -4px #e34720;
+}
 @media print {
   #page-footer {
     page-break-before: always;
