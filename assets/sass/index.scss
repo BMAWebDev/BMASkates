@@ -8,7 +8,8 @@
     'evenimente orar anunturi'
     'sponsori sponsori sponsori'
     'legends legends legends'
-    'informatii-site utilizatori-online informatii-utilizator';
+    'informatii-site utilizatori-online informatii-utilizator'
+    'video-section video-section video-section';
 
   #prezentare {
     grid-area: prezentare;
@@ -147,6 +148,15 @@
     }
   }
 
+  #video-section {
+    grid-area: video-section;
+    max-width: 600px;
+
+    video {
+      width: 100%;
+    }
+  }
+
   @media print {
     img,
     video,
@@ -177,7 +187,8 @@
       'legends legends legends'
       'informatii-site informatii-site informatii-site'
       'utilizatori-online utilizatori-online utilizatori-online'
-      'informatii-utilizator informatii-utilizator informatii-utilizator';
+      'informatii-utilizator informatii-utilizator informatii-utilizator'
+      'video-section video-section video-section';
   }
 }
 

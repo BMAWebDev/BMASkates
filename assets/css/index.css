@@ -210,10 +210,9 @@
   .page-content .watermark {
     display: block;
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    margin: 50vh;
+    font-size: 32px;
+    opacity: 0.65;
   }
 }
 @media print {
@@ -229,7 +228,7 @@ a {
 
 #acasa {
   display: grid;
-  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site utilizatori-online informatii-utilizator";
+  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site utilizatori-online informatii-utilizator" "video-section video-section video-section";
 }
 #acasa #prezentare {
   grid-area: prezentare;
@@ -350,6 +349,13 @@ a {
     display: none;
   }
 }
+#acasa #video-section {
+  grid-area: video-section;
+  max-width: 600px;
+}
+#acasa #video-section video {
+  width: 100%;
+}
 @media print {
   #acasa {
     grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator";
@@ -363,7 +369,7 @@ a {
 }
 @media screen and (max-width: 768px) {
   #acasa {
-    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator";
+    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator" "video-section video-section video-section";
   }
 }
 
