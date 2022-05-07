@@ -6,7 +6,6 @@
   grid-template-areas:
     'prezentare prezentare prezentare'
     'evenimente orar anunturi'
-    'sponsori sponsori sponsori'
     'legends legends legends'
     'informatii-site utilizatori-online informatii-utilizator'
     'video-section video-section video-section';
@@ -108,10 +107,6 @@
     grid-area: informatii-site;
   }
 
-  #sponsori {
-    grid-area: sponsori;
-  }
-
   #legends {
     grid-area: legends;
     margin: 50px 0;
@@ -183,7 +178,6 @@
       'evenimente evenimente evenimente'
       'orar orar orar'
       'anunturi anunturi anunturi'
-      'sponsori sponsori sponsori'
       'legends legends legends'
       'informatii-site informatii-site informatii-site'
       'utilizatori-online utilizatori-online utilizatori-online'
