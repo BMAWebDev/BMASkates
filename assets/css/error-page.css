@@ -1,0 +1,10 @@
+#error-page .master-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+#error-page .master-container img {
+  height: 400px;
+}
+
+/*# sourceMappingURL=error-page.css.map */

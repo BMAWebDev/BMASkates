@@ -1,0 +1,13 @@
+<%- include("../fragmente/header.ejs"); %>
+
+<main id="error-page" class="page-content">
+  <%- include('../fragmente/watermark') %>
+  
+  <div class="master-container">
+    <img src="/img/<%- locals.imagineEroare %>" alt="">
+    <h1><%- locals.titluEroare %></h1>
+    <p><%- locals.textEroare %></p>
+  </div>
+</main>
+
+<%- include("../fragmente/footer.ejs"); %>

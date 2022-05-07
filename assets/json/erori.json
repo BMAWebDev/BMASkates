@@ -1,0 +1,16 @@
+{
+  "erori": [
+    {
+      "id": 404,
+      "titlu": "Oops, 404! Ai cazut de pe placa si ai ajuns unde nu trebuie.",
+      "text": "Stim cat de frustrant e sa nu iti iasa trickul pe care il incerci de foarte mult timp, dar hei, capul sus. Intr-o zi iti va iesi. Asa si cu linkul pe care il cautai. Intr-o zi il vei gasi 😄",
+      "imagine": "404-skateboard.png"
+    },
+    {
+      "id": 403,
+      "titlu": "Oops, 403! Din pacate nu ai acces in aceasta zona, staff only!",
+      "text": "Poti vorbi cu cineva sa te ajute sa cauti ce doresti in schimb 😄",
+      "imagine": "403-forbidden.png"
+    }
+  ]
+}
