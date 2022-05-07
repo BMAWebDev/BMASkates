@@ -13,9 +13,26 @@
   #prezentare {
     grid-area: prezentare;
 
+    .page-title {
+      margin: 20px 0 50px;
+
+      @media print {
+        text-align: center;
+        text-decoration: underline;
+        font-size: 2.5rem;
+        page-break-after: always;
+      }
+    }
+
     .image-click {
       position: relative;
       z-index: -1;
+    }
+
+    @media print {
+      width: 80%;
+      margin: 0 auto;
+      border: 1px solid #000;
     }
   }
 
@@ -124,6 +141,30 @@
         }
       }
     }
+
+    @media print {
+      display: none;
+    }
+  }
+
+  @media print {
+    img,
+    video,
+    iframe,
+    figure {
+      display: none;
+    }
+
+    grid-template-areas:
+      'prezentare prezentare prezentare'
+      'evenimente evenimente evenimente'
+      'orar orar orar'
+      'anunturi anunturi anunturi'
+      'sponsori sponsori sponsori'
+      'legends legends legends'
+      'informatii-site informatii-site informatii-site'
+      'utilizatori-online utilizatori-online utilizatori-online'
+      'informatii-utilizator informatii-utilizator informatii-utilizator';
   }
 
   @media screen and (max-width: 768px) {
@@ -168,5 +209,9 @@
       border-bottom: 10px solid yellow;
       opacity: 1;
     }
+  }
+
+  @media print {
+    display: none;
   }
 }

@@ -1,7 +1,9 @@
+@use '../variables';
+
 #page-header {
   z-index: 1;
   position: fixed;
-  background-color: #000;
+  background-color: variables.$primary_color;
   color: #fff;
   width: 100%;
 
@@ -34,7 +36,7 @@
         transition: text-shadow 0.7s;
 
         &:hover {
-          background: #727072;
+          background: variables.$seconday_color;
           text-shadow: 1px 1px 2px;
           transition: text-shadow 0.7s;
         }
@@ -44,7 +46,7 @@
           padding-left: 0;
           list-style-type: none;
           display: none;
-          background-color: #000;
+          background-color: variables.$primary_color;
           left: 0;
           top: 50px;
           width: max-content;
@@ -53,12 +55,12 @@
           li {
             padding: 7px 10px;
             text-shadow: none;
-            background: #72707200;
+            background: variables.$primary_color;
             transition: background 1s;
 
             &:hover {
               text-decoration: underline;
-              background: #727072;
+              background: variables.$seconday_color;
               transition: background 1s;
             }
           }
@@ -201,5 +203,9 @@
         }
       }
     }
+  }
+
+  @media print {
+    display: none;
   }
 }

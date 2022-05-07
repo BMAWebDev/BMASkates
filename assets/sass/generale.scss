@@ -18,6 +18,22 @@
 
 .page-content {
   padding-top: 8vh;
+
+  .watermark {
+    display: none;
+
+    @media print {
+      display: block;
+      position: fixed;
+      margin: 50vh;
+      font-size: 32px;
+      opacity: 0.65;
+    }
+  }
+
+  @media print {
+    padding-top: 1vh;
+  }
 }
 
 a {
