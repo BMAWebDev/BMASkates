@@ -1,0 +1,14 @@
+#error-403-page .master-container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  min-height: 60vh;
+}
+#error-403-page .master-container img {
+  height: 400px;
+}
+#error-403-page .master-container h1 {
+  margin-top: 25px;
+}
+
+/*# sourceMappingURL=403.css.map */

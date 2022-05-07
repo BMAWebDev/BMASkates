@@ -1,11 +1,15 @@
 const fs = require('fs');
 
 module.exports = (req, res) => {
-  let fileExists = fs.existsSync(`views/pagini/${req.url}.ejs`);
-  res.locals.page = fileExists ? req.url : '/404';
+  const fileExists = fs.existsSync(`views/pagini/${req.url}.ejs`);
+
+  if (req.url.slice(-4) == '.ejs') res.locals.page = '/403';
+  else if (fileExists) res.locals.page = req.url;
+  else res.locals.page = '/404';
 
   res.render('pagini' + req.url, (err, rezRandare) => {
-    if (err && err.message.includes('Failed to lookup')) res.status(404).render('pagini/404');
+    if (req.url.slice(-4) == '.ejs') res.status(403).render('pagini/403');
+    else if (err && err.message.includes('Failed to lookup')) res.status(404).render('pagini/404');
     else res.send(rezRandare);
   });
 };
