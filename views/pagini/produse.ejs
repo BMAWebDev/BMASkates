@@ -1,0 +1,14 @@
+<%- include('../fragmente/header') %>
+
+<main id="produse-page" class="page-content">
+  <%- include('../fragmente/watermark') %>
+
+  <% for(let produs of locals.produse) { %>
+    <div>Nume: <%= produs.nume %></div>
+    <div>Descriere: <%= produs.descriere %></div>
+    <div>Pret: <%= produs.pret %></div>
+    <hr>
+  <% } %>
+</main>
+
+<%- include('../fragmente/footer') %>
