@@ -26,6 +26,16 @@
                   <%= produs.brand %>
                 </li>
                 <li class="caracteristica">
+                  <span class="bold">In stoc:</span>
+                  <%= produs.in_stoc ? 'Da' : 'Nu' %>
+                </li>
+                <% if(produs.in_stoc) { %>
+                  <li class="caracteristica">
+                    <span class="bold">Magazine disponibile:</span>
+                    <%= produs.magazine_stoc.join(',') %>
+                  </li>
+                <% } %>
+                <li class="caracteristica">
                   <span class="bold">Data aparitiei:</span>
                   <time datetime="<% produs.data_adaugare %>">
                     <%
