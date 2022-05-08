@@ -21,9 +21,10 @@
       <li class="first-child">
         <a href="/produse" class="selector">Produse</a>
         <ul>
-          <li><a href="/shop/skate">Skate-uri</a></li>
-          <li><a href="/shop/role">Role</a></li>
-          <li><a href="/shop/snowboard">Snowboard-uri</a></li>
+          <li><a href="/produse">Toate</a></li>
+          <% for(let categorie of locals.header_categorii) { %>
+            <li><a href="/produse?=<%= categorie %>"><%= categorie %></a></li>
+          <% } %>
         </ul>
       </li>
       <li class="first-child">

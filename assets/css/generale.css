@@ -31,6 +31,7 @@
   padding: 15px;
   text-shadow: 1px -50px 2px;
   transition: text-shadow 0.7s;
+  text-transform: capitalize;
 }
 #page-header .nav .nav-list li.first-child:hover {
   background: #e09a07;
@@ -53,6 +54,7 @@
   text-shadow: none;
   background: #e34720;
   transition: background 1s;
+  text-transform: capitalize;
 }
 #page-header .nav .nav-list li.first-child ul li:hover {
   text-decoration: underline;

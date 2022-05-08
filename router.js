@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { errorHandler } = require('./middleware');
+const { errorHandler, setGlobalLocals } = require('./middleware');
 const { Restul } = require('./controllers');
 const { acasa, contact, produse, produs } = require('./routes');
 
@@ -7,6 +7,8 @@ const router = Router();
 module.exports = router;
 
 // utilizeaza instantele definite
+router.use(setGlobalLocals);
+
 router.use(acasa);
 router.use(contact);
 router.use(produse);
