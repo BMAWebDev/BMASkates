@@ -11,6 +11,12 @@
       "titlu": "Oops, 403! Din pacate nu ai acces in aceasta zona, staff only!",
       "text": "Poti vorbi cu cineva sa te ajute sa cauti ce doresti in schimb 😄",
       "imagine": "403-forbidden.png"
+    },
+    {
+      "id": 1,
+      "titlu": "Eroare baza date",
+      "text": "Reveniti mai tarziu!",
+      "imagine": "interzis.png"
     }
   ]
 }
