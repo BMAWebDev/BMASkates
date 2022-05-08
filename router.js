@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { errorHandler } = require('./middleware');
 const { Restul } = require('./controllers');
-const { acasa, contact, produse } = require('./routes');
+const { acasa, contact, produse, produs } = require('./routes');
 
 const router = Router();
 module.exports = router;
@@ -10,6 +10,7 @@ module.exports = router;
 router.use(acasa);
 router.use(contact);
 router.use(produse);
+router.use(produs);
 
 // trateaza toate rutele care nu se potrivesc cu cele de mai sus
 router.all('*', Restul);
