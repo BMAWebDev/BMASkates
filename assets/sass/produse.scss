@@ -1,0 +1,60 @@
+#produse-page {
+  #title-section {
+    margin-bottom: 30px;
+
+    .page-title {
+      font-size: 26px;
+    }
+  }
+
+  .produse {
+    .produs {
+      margin-bottom: 50px;
+      padding: 0;
+
+      .master-container {
+        margin-inline: 5px;
+        box-shadow: 1px 1px 6px 0px grey;
+        padding: 15px;
+        height: 100%;
+        border-radius: 5px;
+
+        .titlu-produs {
+          font-size: 16px;
+        }
+
+        .imagine-produs {
+          width: 128px;
+          margin: 20px 0;
+        }
+
+        .column-1 {
+          .caracteristici {
+            list-style-type: none;
+
+            .caracteristica {
+              margin-bottom: 10px;
+
+              &,
+              .bold,
+              time {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+
+        .column-2 {
+          div {
+            margin-bottom: 10px;
+
+            &,
+            .bold {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

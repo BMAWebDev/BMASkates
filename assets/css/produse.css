@@ -1,0 +1,44 @@
+#produse-page #title-section {
+  margin-bottom: 30px;
+}
+#produse-page #title-section .page-title {
+  font-size: 26px;
+}
+#produse-page .produse .produs {
+  margin-bottom: 50px;
+  padding: 0;
+}
+#produse-page .produse .produs .master-container {
+  margin-inline: 5px;
+  box-shadow: 1px 1px 6px 0px grey;
+  padding: 15px;
+  height: 100%;
+  border-radius: 5px;
+}
+#produse-page .produse .produs .master-container .titlu-produs {
+  font-size: 16px;
+}
+#produse-page .produse .produs .master-container .imagine-produs {
+  width: 128px;
+  margin: 20px 0;
+}
+#produse-page .produse .produs .master-container .column-1 .caracteristici {
+  list-style-type: none;
+}
+#produse-page .produse .produs .master-container .column-1 .caracteristici .caracteristica {
+  margin-bottom: 10px;
+}
+#produse-page .produse .produs .master-container .column-1 .caracteristici .caracteristica,
+#produse-page .produse .produs .master-container .column-1 .caracteristici .caracteristica .bold,
+#produse-page .produse .produs .master-container .column-1 .caracteristici .caracteristica time {
+  font-size: 16px;
+}
+#produse-page .produse .produs .master-container .column-2 div {
+  margin-bottom: 10px;
+}
+#produse-page .produse .produs .master-container .column-2 div,
+#produse-page .produse .produs .master-container .column-2 div .bold {
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=produse.css.map */

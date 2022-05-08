@@ -107,6 +107,11 @@
 #page-header .nav .logo-container .logo {
   margin: 15px;
 }
+@media screen and (max-width: 768px) {
+  #page-header .nav .logo-container {
+    display: none;
+  }
+}
 #page-header #toggle-menu-input:checked + .nav {
   display: flex;
   flex-direction: column-reverse;
@@ -209,6 +214,22 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+}
+
+dl,
+ol,
+ul {
+  margin-bottom: inherit;
+  padding-left: inherit;
+}
+
 .page-content {
   padding-top: 8vh;
 }
@@ -230,7 +251,8 @@
   }
 }
 
-a {
+a,
+a[href] {
   text-decoration: none;
   color: inherit;
 }

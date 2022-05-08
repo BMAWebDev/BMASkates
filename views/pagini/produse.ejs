@@ -1,55 +1,61 @@
 <%- include('../fragmente/header') %>
 
-<main id="produse-page" class="page-content">
+<main id="produse-page" class="page-content container">
   <%- include('../fragmente/watermark') %>
 
-  <section>
-    <h2>Produse</h2>
+  <section id="title-section">
+    <h2 class="page-title">Produse</h2>
   </section>
 
-  <% for(let produs of locals.produse) { %>
-    <article id="artc-<%= produs.id %>" class="produs <%= produs.categorie %>">
-      <h3>Nume: <%= produs.nume %></h3>
-      <div class="disk column-1">
-        <img height="128" src="/img/produse/<%= produs.imagine %>" alt="">
-        <ul class="caracteristici">
-          <li class="caracteristica">
-            <span class="bold">Pret:</span>
-            <%= produs.pret %>
-          </li>
-          <li class="caracteristica">
-            <span class="bold">Brand:</span>
-            <%= produs.brand %>
-          </li>
-          <li>
-            <span class="bold">Data aparitiei:</span>
-            <time datetime="<% produs.data_adaugare %>">
-              <%
-                let dataDB = new Date(produs.data_adaugare.toString());
-                let weekDay = dataDB.toLocaleDateString("ro", { weekday: "long" })
-                let data = dataDB.toLocaleDateString("ro", { day: "numeric", month: "long", year: "numeric" })
-
-                const fullDate = `${data}, ${weekDay}`;
-                __append(fullDate);
-              %>
-            </time>
-          </li>
-        </ul>
-      </div>
-      <div class="disk column-2">
-        <div>
-          <span class="bold">Categorie:</span> 
-          <%= produs.categorie %>
-        </div>
-        <div>
-          <span class="bold">Descriere:</span>
-          <%= produs.descriere %>
-        </div>
-      </div>
+  <section class="produse">
+    <div class="row">
+      <% for(let produs of locals.produse) { %>
+        <article id="artc-<%= produs.id %>" class="col-lg-4 produs <%= produs.categorie %>">
+          <div class="master-container">
+            <a href="/produse/<%= produs.id %>"><h3 class="titlu-produs">Nume: <%= produs.nume %></h3></a>
+            <div class="disk column-1">
+              <a href="/produse/<%= produs.id %>"><img class="imagine-produs" src="/img/produse/<%= produs.imagine %>" alt=""></a>
+              
+              <ul class="caracteristici">
+                <li class="caracteristica">
+                  <span class="bold">Pret:</span>
+                  <%= produs.pret %>
+                </li>
+                <li class="caracteristica">
+                  <span class="bold">Brand:</span>
+                  <%= produs.brand %>
+                </li>
+                <li class="caracteristica">
+                  <span class="bold">Data aparitiei:</span>
+                  <time datetime="<% produs.data_adaugare %>">
+                    <%
+                      let dataDB = new Date(produs.data_adaugare.toString());
+                      let weekDay = dataDB.toLocaleDateString("ro", { weekday: "long" })
+                      let data = dataDB.toLocaleDateString("ro", { day: "numeric", month: "long", year: "numeric" })
       
-      <a href="/produse/<%= produs.id %>">Vezi mai multe detalii</a>
-    </article>
-  <% } %>
+                      const fullDate = `${data}, ${weekDay}`;
+                      __append(fullDate);
+                    %>
+                  </time>
+                </li>
+              </ul>
+            </div>
+            <div class="disk column-2">
+              <div>
+                <span class="bold">Categorie:</span> 
+                <%= produs.categorie %>
+              </div>
+              <div>
+                <span class="bold">Descriere:</span>
+                <%= produs.descriere %>
+              </div>
+            </div>
+          </div>
+        </article>
+      <% } %>
+    </div>
+  </section>
+
 </main>
 
 <%- include('../fragmente/footer') %>

@@ -16,6 +16,22 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+}
+
+dl,
+ol,
+ul {
+  margin-bottom: inherit;
+  padding-left: inherit;
+}
+
 .page-content {
   padding-top: 8vh;
 
@@ -36,7 +52,8 @@
   }
 }
 
-a {
+a,
+a[href] {
   text-decoration: none;
   color: inherit;
 }

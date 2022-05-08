@@ -123,6 +123,10 @@
       .logo {
         margin: 15px;
       }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
   }
 
