@@ -1,68 +1,54 @@
 DROP TYPE IF EXISTS product_cat;
-DROP TYPE IF EXISTS products_types;
+DROP TYPE IF EXISTS product_type;
 
-CREATE TYPE product_cat AS ENUM( 'accesorii', 'piese', 'snowboard', 'role', 'skateboard', 'longboard');
-CREATE TYPE products_types AS ENUM('skateboard', 'longboard', 'rollerskate', 'snowboard');
-
+CREATE TYPE product_cat AS ENUM( 'accesorii', 'echipament', 'sporturi');
+CREATE TYPE product_type AS ENUM('agresive', 'skateboard', 'longboard', 'role', 'snowboard');
 
 CREATE TABLE IF NOT EXISTS products (
    id serial PRIMARY KEY,
-   nume VARCHAR(50) UNIQUE NOT NULL,
+   nume TEXT UNIQUE NOT NULL,
    descriere TEXT,
    pret NUMERIC(8,2) NOT NULL,
-   gramaj INT NOT NULL CHECK (gramaj>=0),   
-   tip_produs products_types DEFAULT 'skateboard',
-   calorii INT NOT NULL CHECK (calorii>=0),
-   categorie product_cat DEFAULT 'skateboard',
-   ingrediente VARCHAR [], --pot sa nu fie specificare deci nu punem NOT NULL
-   pt_diabetici BOOLEAN NOT NULL DEFAULT FALSE,
+   brand VARCHAR(50),
+   tip_produs product_type DEFAULT 'skateboard',
+   categorie product_cat DEFAULT 'sporturi',
    imagine VARCHAR(300),
    data_adaugare TIMESTAMP DEFAULT current_timestamp
 );
 
-INSERT into products (nume, descriere, pret, gramaj, calorii, tip_produs, categorie, ingrediente, pt_diabetici, imagine) VALUES 
-('Savarină', 'Prăjitură insiropată, cu frișcă', 7.5 , 200, 400, 'skateboard', 'accesorii', '{"faina","lapte","frisca","zahar"}', False, 'aproximativ-savarina.jpg'),
+INSERT into products (nume, descriere, pret, brand, tip_produs, categorie, imagine) VALUES 
+('Set 4 Roti Agresive GC UR Constellation 64mm/90A black', 'GC a dezvoltat o nouă compoziție a uretanului (ultimate rebound), care are cu 7,1% mai mult rebound în comparație cu roțile CM și este cu 50% mai rezistent la frecare. Set 4 roți GC UR Constellation 64mm/90A pentru role agresive.', 199, 'GROUND CONTROL', 'agresive', 'accesorii', '1.jpg'),
 
-('Amandină', 'Prăjitură cu ciocolată', 6 , 200, 400, 'skateboard', 'accesorii', '{"faina","ciocolata","lapte","zahar","unt"}', False, 'posibil-amandina.jpg'),
+('Set 4 Roti Agresive GC Henderson II 64mm/90A black', 'GC a dezvoltat o nouă compoziție a uretanului (ultimate rebound), care are cu 7,1% mai mult rebound în comparație cu roțile CM și este cu 50% mai rezistent la frecare. Set 4 roți GC UR Constellation 64mm/90A pentru role agresive.', 179, 'GROUND CONTROL', 'agresive', 'accesorii', '2.jpg'),
 
-('Tort glazurat', 'Tort pentru evenimente, poate fi decorat cu diverse culori', 35 , 1000, 2500, 'skateboard', 'piese', '{"oua","zahar","faina","lapte","ciocolata","alune"}', False,'tort-glazurat.jpg'),
+('Ceara Blunt', 'Ceara Blunt pentru skateboard/trotinete/agresive', 35, 'BLUNT', 'skateboard', 'accesorii', '3.jpg'),
 
-('Dulcelind cu fructe', 'Rețetă proprie, cu conținut sănătos (dacă ignorați tonele de zahăr) de fruncte proaspete', 10 , 250, 620, 'skateboard', 'snowboard', '{"frisca","zahar","faina","zmeura","lapte","mure","capsuni"}', False,'dulcelind.jpg'),
+('Rulmenti skateboard Birdhouse Abec5 Grey', 'Setul contine 8 rulmenti Abec5 Grey pentru skateboard produsi de catre Birdhouse. Setul include si 4 distantieri de 8mm', 79, 'BIRDHOUSE', 'skateboard', 'accesorii', '4.jpg'),
 
-('Tartă cu căpșuni', 'Sub căpșuni se află o tartă.', 6 , 245, 280, 'skateboard', 'accesorii', '{"vanilie","faina","capsuni","lapte", "indulcitor"}', True,'tarta-capsuni.jpg'),
+('Husa Level pentru protectie lentila ochelari', 'Husa Level pentru protectia ochelarilor de ski si snowboard.', 50, 'LEVEL', 'snowboard', 'accesorii', '5.jpg'),
 
-('Nimic', 'Nimic', 10 , 0, 0, 'skateboard', 'role', '{}', False, 'nimic.jpg'),
+('Set protectii 187 Killer Jr. Black', 'Setul de protectii 187 Killer JR au un profil slim si sunt recomandate pentru sporturile extreme.', 269, '187', 'skateboard', 'echipament', '6.jpg'),
 
-('Cozonac zburător', 'Cineva a vărsat heliu peste aluat.', 25.5 , 1000, 1800, 'skateboard', 'accesorii', '{"zahar","unt","faina","lapte","cacao","alune", "nuca"}', False, 'cozonac-zburator.jpg'),
+('Genunchiere Pro-Tec Street Pad Open Checker', 'Pro-Tec a stabilit un nou standard cu modelele din seria Street. Acestea sunt confectionate din materiale extrem de rezistente, spuma EVA si capace generoase ce acopera complet zona fara a incomoda miscarile.', 169, '', 'skateboard', 'echipament', '7.jpg'),
 
-('Brioșe', 'Aluat pufos, cu bucățele de ciocolată. Bucățelele de ciocolata, însă, nu sunt tocmai pufoase.', 8 , 145, 320, 'skateboard', 'accesorii', '{"ciocolata","lapte","unt","migdale","faina","zahar"}', False, 'briose.jpg'),
+('Protectii pentru incheietura Triple 8 Slide On', 'Protectii pentru incheietura Triple 8 Slide On', 89, 'TRIPLE EIGHT', 'role', 'echipament', '8.jpg'),
 
-('Turtă dulce', 'Un produs bun de savurat de Craciun. Sau și mai târziu dacă stocul a depășit cererea. De obicei mai găsiți și prin iunie...', 12 , 400, 550, 'skateboard', 'snowboard', '{"faina","lapte","scortisoara","zahar","unt"}', False, 'turta-dulce.jpg'),
+('Casca Bullet Deluxe T35 Matt White', '', 169, 'BULLET', 'role', 'echipament', '9.jpg'),
 
-('Turtă dulce dietetică', 'Îndulcitor în loc de zahăr. Dar nu vă lăsați păcăliți de nume, în rest nimic nu-i dietetic.', 10 , 400, 520, 'skateboard', 'snowboard', '{"faina","lapte","zaharina","unt","scortisoara"}', True, 'turta-dulce-dietetica.jpg'),
+('Ulei Bronson High Speed Ceramic', 'Ulei aero-sintetic de precizie, amestecat cu compuși nano ceramici pentru o viteză și protecție împotriva uzurii de neegalat. Protecție superioară pentru suprafețele rulmenților împotriva umezelii, ruginei și coroziunii.', 39, 'BRONSON', 'longboard', 'echipament', '10.jpg'),
 
-('Căsuță din turtă dulce', 'Vine cu tot cu vrăjitoare și cuptor la pachet. A nu se lăsa în mijlocul pădurii.', 70 , 450, 2700, 'skateboard', 'snowboard', '{"unt","scortisoara", "oua","faina","lapte","zahar"}', False, 'casuta-turta-dulce.jpg'),
+('Skateboard Birdhouse Stage 3 Hawk Birdman Blue 8 inch', 'Stage 3 reprezintă gama de skate-uri de top a Birdhouse, iar modelul Hawk Wings nu face excepție. Deck-ul este realizat din 7 straturi de arțar canadian, lipite între ele cu rășină epoxy pentru durabilitate, iar axele Birdhouse sunt dotate cu roți de 52mm și rulmenți Abec 7.', 449, 'BIRDHOUSE', 'skateboard', 'sporturi', '11.jpg'),
 
-('Croissant', 'Un răsfăț pufos și dulce... mda... dulce... dacă nu încurcă Dorelina, iar, sarea cu zahărul!!!', 5 , 150, 285, 'skateboard', 'accesorii', '{"faina","lapte","zahar/sare","unt","ciocolata","migdale"}', False, 'croissant.jpg'),
+('Skateboard Enuff Cherry Blossom White/Teal 32x8inch', 'Modelul Cherry Blossom este un complete foarte apreciat din colecția Enuff Skateboards. Cu o grafică deosebit de frumoasă și dotări tehnice de încredere, acest skateboard te va ajuta să progresezi și să îți îmbunătățești stilul.', 469, '', 'skateboard', 'sporturi', '12.jpg'),
 
-('Prajitura căpșuni', 'Prăjitura se face doar cu comandă specială, fiindcă apoi o comandăm și noi la rândul nostru la cofetăria vecină.', 15 , 180, 385, 'skateboard', 'piese', '{"faina","lapte","zahar", "capsuni","unt","gelatina"}', False, 'prajitura-capsuni.jpg'),
+('Longboard Loaded Icarus Kegels And In Heats Flex 1 38.4inch/97.5cm', '', 1999, 'LOADED', 'longboard', 'sporturi', '13.jpg'),
 
-('Nasturei cu dulceață', 'Pentru când năstureii normali cedează fiindcă ați mâncat prea multă dulceață', 20.5 , 350, 700, 'skateboard', 'accesorii', '{"migdale", "faina","lapte","zahar","unt","dulceata"}', False, 'nasturei-dulceata.jpg'),
+('Longboard Santa Cruz Red Dot Pintail Multi', '', 879, 'SANTA CRUZ', 'longboard', 'sporturi', '14.jpg'),
 
+('Role Razors SL Red', 'Gheata ușoară de tip hard-boot este prevăzută cu cataramă clasică Razors, liner Razors SL Heelpad, roți GC LITE de 57mm, rulmenți ABEC 5 și frame GC FLT3. Modelul SL Red reprezintă combinația perfectă între echilibru și grind-uri și s-a dovedit a fi durabil, oferind suportul de care ai nevoie la fiecare folosire.', 1289, 'RAZORS', 'role', 'sporturi', '15.jpg'),
 
-('Bomboane de ciocolată pe băț', 'Bățul e cel comestibil, nu bomboana.', 6, 100, 210,'skateboard', 'longboard', '{"ciocolata", "zahar", "lapte", "alune", "faina"}', False, 'bomboane-ciocolata-bat.jpg'),
+('Role Anarchy Panik 3 Black', 'Modelul Anarchy Panik 3 este o rolă agresivă ajustabilă, ideală pentru copiii ce-și doresc să învețe acest sport. Această rolă semi-soft este confortabilă și ușoară, și este ajustabilă pe 4 mărimi.', 589, 'ANARCHY', 'role', 'sporturi', '16.jpg'),
 
-('Înghețată fumătoare', 'Din când în când, tușește... Dar nu are COVID!', 18.5 , 225, 370, 'skateboard', 'accesorii', '{"smantana","lapte","migdale", "dulceata","zahar","vanilie","ciocolata", "frisca"}', False, 'inghetata-fumatoare.jpg'),
+('Placa Snowboard Nitro Beast x Volcom 2022', 'Snowboard-ul Beast x Volcom ofera progres, stabilitate, perfomanta la calibru pro si durabilitate pentru cei care isi doresc asta.', 2269, 'NITRO', 'snowboard', 'sporturi', '17.jpg'),
 
-
-('Înghețată multicoloră', 'Când storci un curcubeu peste înghețată... Ediție limitată; fabricăm doar după ploaie.', 12 , 120, 270, 'skateboard', 'piese', '{"smantana","lapte","migdale", "dulceata","zahar","vanilie","ciocolata", "frisca"}', False, 'inghetata-multicolora.jpg'),
-
-
-('Brioșă cu înghețată', 'Nu încercam să fim creativi... Dorelina a încurcat iar rețetele. Măcar are culoare roz', 14 , 235, 340, 'skateboard', 'longboard', '{"frisca", "smantana", "lapte", "ceva roz", "faina","zahar","vanilie"}', False, 'briosa-inghetata.jpg'),
-
-('Înghețată generică', 'Când bușim așa de tare rețeta încât nu se mai încadrează în niuna dintre celelalte categorii.', 8, 90, 130, 'skateboard','accesorii','{"frisca", "smantana", "lapte", "ceva roz", "faina","zahar","vanilie"}', False, 'inghetata-generica.jpg'),
-
-('Imagine cu înghețată', 'Pentru cei aflați la dietă.', 5, 10,10,'skateboard', 'accesorii', '{"hârtie", "tuș"}', False, 'imagine-cu-inghetata.jpg'),
-
-
-('Bomboane colorate', 'Pentru copiii care doresc să afle devreme cum e o vizită la dentist.', 7, 150,340,'skateboard', 'longboard', '{"zahar", "ciocolata","lapte"}', False, 'bomboane-colorate.jpg');
+('Placa Snowboard Rome Blur 2020', 'Echipata cu cele mai usoare materiale, impreuna cu insertiile de carbon dispuse longitudinal catre marginile placii Rome Blur are un super pop, iar insertiile de fibra de sticla dispuse in zona legaturilor iti vor oferi maxim de siguranta chiar si la cele mai dificile aterizari.', 1539, 'ROME SDS', 'snowboard', 'sporturi', '18.jpg')
