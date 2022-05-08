@@ -3,16 +3,52 @@
 <main id="produse-page" class="page-content">
   <%- include('../fragmente/watermark') %>
 
+  <section>
+    <h2>Produse</h2>
+  </section>
+
   <% for(let produs of locals.produse) { %>
-    <div>Nume: <%= produs.nume %></div>
-    <div>Descriere: <%= produs.descriere %></div>
-    <div>Pret: <%= produs.pret %></div>
-    <div>Brand: <%= produs.brand %></div>
-    <div>Tip: <%= produs.tip_produs %></div>
-    <div>Categorie: <%= produs.categorie %></div>
-    <img height="128" src="/img/produse/<%= produs.imagine %>" alt="">
-    <a href="/produse/<%= produs.id %>">Vezi mai multe detalii</a>
-    <hr>
+    <article id="artc-<%= produs.id %>" class="produs <%= produs.categorie %>">
+      <h3>Nume: <%= produs.nume %></h3>
+      <div class="disk column-1">
+        <img height="128" src="/img/produse/<%= produs.imagine %>" alt="">
+        <ul class="caracteristici">
+          <li class="caracteristica">
+            <span class="bold">Pret:</span>
+            <%= produs.pret %>
+          </li>
+          <li class="caracteristica">
+            <span class="bold">Brand:</span>
+            <%= produs.brand %>
+          </li>
+          <li>
+            <span class="bold">Data aparitiei:</span>
+            <time datetime="<% produs.data_adaugare %>">
+              <%
+                let dataDB = new Date(produs.data_adaugare.toString());
+                let weekDay = dataDB.toLocaleDateString("ro", { weekday: "long" })
+                let data = dataDB.toLocaleDateString("ro", { day: "numeric", month: "long", year: "numeric" })
+
+                const fullDate = `${data}, ${weekDay}`;
+                __append(fullDate);
+              %>
+            </time>
+          </li>
+        </ul>
+      </div>
+      <div class="disk column-2">
+        <div>
+          <span class="bold">Categorie:</span> 
+          <%= produs.categorie %>
+        </div>
+        <div>
+          <span class="bold">Descriere:</span>
+          <%= produs.descriere %>
+        </div>
+      </div>
+      
+      <a href="/produse/<%= produs.id %>">Vezi mai multe detalii</a>
+    </article>
   <% } %>
 </main>
 
