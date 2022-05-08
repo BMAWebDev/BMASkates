@@ -4,10 +4,11 @@ const { Restul } = require('./controllers');
 const { acasa, contact, produse, produs } = require('./routes');
 
 const router = Router();
+
+router.use(setGlobalLocals);
 module.exports = router;
 
 // utilizeaza instantele definite
-router.use(setGlobalLocals);
 
 router.use(acasa);
 router.use(contact);

@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
       const { response } = jsonErrorHandler(req, res, 1); //1 e de la jsonErrorID, id-ul erorii din json
       res = response;
 
-      res.status(400).render('pagini/eroare_generala');
+      return res.status(400).render('pagini/eroare_generala');
     } else {
       const categorii = [];
       resQuery.rows.forEach((row) => categorii.push(row.unnest));

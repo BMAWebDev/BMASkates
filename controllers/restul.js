@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { erori } = require('../assets/json/erori.json');
 const { jsonErrorHandler } = require('../middleware');
 

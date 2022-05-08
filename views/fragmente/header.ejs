@@ -22,7 +22,7 @@
         <a href="/produse" class="selector">Produse</a>
         <ul>
           <li><a href="/produse">Toate</a></li>
-          <% for(let categorie of locals.header_categorii) { %>
+          <% if(locals.header_categorii?.length) for(let categorie of locals.header_categorii) { %>
             <li><a href="/produse?=<%= categorie %>"><%= categorie %></a></li>
           <% } %>
         </ul>
