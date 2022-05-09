@@ -7,6 +7,25 @@
     }
   }
 
+  .filtre {
+    .form-group {
+      margin: 10px 0;
+    }
+
+    .d-column {
+      flex-direction: column;
+    }
+
+    .d-flex-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .buttons-container {
+      margin: 15px 0;
+    }
+  }
+
   .produse {
     .produs {
       margin-bottom: 50px;

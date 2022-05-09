@@ -4,6 +4,19 @@
 #produse-page #title-section .page-title {
   font-size: 26px;
 }
+#produse-page .filtre .form-group {
+  margin: 10px 0;
+}
+#produse-page .filtre .d-column {
+  flex-direction: column;
+}
+#produse-page .filtre .d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+#produse-page .filtre .buttons-container {
+  margin: 15px 0;
+}
 #produse-page .produse .produs {
   margin-bottom: 50px;
   padding: 0;

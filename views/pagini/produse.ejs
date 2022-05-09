@@ -7,85 +7,99 @@
     <h2 class="page-title">Produse</h2>
   </section>
   
-  <section id="filtre">
-    <div class="from-group">
-      <label for="search-name-filter-input">Cauta dupa nume:</label>
-      <input type="text" id="search-name-filter-input">
-    </div>
-
-    <div class="form-group">
-      <label for="price-filter-input">Pret:</label>
-      <span id="minVal"><%= locals.pret_min %></span> 
-      <input type="range" id="price-filter-input" value="<%= locals.pret_min %>" min="<%= locals.pret_min %>"  max="<%= locals.pret_max %>"> 
-      <span id="maxVal"><%= locals.pret_max %></span> 
-      <span id="price-range-val">(0)</span>
-    </div>
-
-    <div class="form-group">
-      <label for="categorie">Categorie:</label>
-      <input list="categorii" id="categorie-filtru-input">
-
-      <datalist id="categorii">
-        <% for (let categorie of locals.header_categorii) { %>
-          <option value="<%= categorie %>"><%= categorie %></option>
-        <% } %>
-      </datalist>
-    </div>
-
-    <div class="from-group">
-      <p>Disponibilitate:</p>
-
-      <label for="in_stoc-filtru-input">Toate:</label>
-      <input type="radio" name="disponibilitate" id="disponibilitate_toate-filtru-input" checked>
-
-      <label for="in_stoc-filtru-input">In stoc:</label>
-      <input type="radio" name="disponibilitate" id="disponibilitate_in_stoc-filtru-input">
-
-      <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
-      <input type="radio" name="disponibilitate" id="disponibilitate_in_afara_stoc-filtru-input">
-    </div>
-
-    <div class="form-group">
-      <p>Oras:</p>
-      <label for="oras_initial-filtru-input">Niciun oras</label>
-      <input type="checkbox" name="oras" id="oras_initial-filtru-input" value="niciun_oras" checked>
-      <% for (let oras of locals.orase ) { %>
-        <label for="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input"><%= oras %></label>
-        <input type="checkbox" name="oras" id="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input" value="<%= oras %>">
-      <% } %>
-    </div>
-
-    <div class="from-group">
-      <label for="descriere-filtru-input">Cauta dupa descriere:</label>
-      <textarea name="descriere-filtru-input" id="descriere-filtru-input"></textarea>
-    </div>
-
-    <div class="from-group">
-      <label for="brand-filtru-input">Brand:</label>
-      <select name="brand-filtru-input" id="brand-filtru-input">
-        <option value="" selected>Niciun brand</option>
-        <% for (let brand of locals.branduri ) { %>
-          <option value="<%= brand.trim().replaceAll(' ', '-') %>"><%= brand %></option>
-        <% } %>
-      </select>
-    </div>
-
-    <div class="from-group">
-      <label for="tipuri-produse-filtru-input">Tipuri produse:</label>
-      <select name="tipuri-produse-filtru-input" id="tipuri-produse-filtru-input" multiple>
-        <option value="" selected>Niciun tip produs</option>
-        <% for (let tip_produs of locals.tipuri_produse ) { %>
-          <option value="<%= tip_produs.trim().replaceAll(' ', '-') %>"><%= tip_produs %></option>
-        <% } %>
-      </select>
-    </div>
+  <section class="filtre">
     
-    <p>
-      <button id="filtreaza">Filtreaza</button> 
-      <button id="reseteaza">Reseteaza</button><br/>
-      <button id="sortCrescNumePret">Sorteaza crescator dupa nume si pret</button>
-      <button id="sortDescNumePret">Sorteaza descrescator dupa nume si pret</button>
-    </p>
+    <div class="row">
+      <div class="form-group col-lg-6 d-flex-column">
+        <label for="search-name-filter-input">Cauta dupa nume:</label>
+        <input type="text" id="search-name-filter-input">
+      </div>
+  
+      <div class="form-group col-lg-6">
+        <label for="price-filter-input">Pret:</label>
+        <span id="minVal"><%= locals.pret_min %></span> 
+        <input type="range" id="price-filter-input" value="<%= locals.pret_min %>" min="<%= locals.pret_min %>"  max="<%= locals.pret_max %>"> 
+        <span id="maxVal"><%= locals.pret_max %></span> 
+        <span id="price-range-val">(0)</span>
+      </div>
+  
+      <div class="form-group col-lg-6 d-flex-column">
+        <label for="categorie">Categorie:</label>
+        <input list="categorii" id="categorie-filtru-input">
+  
+        <datalist id="categorii">
+          <% for (let categorie of locals.header_categorii) { %>
+            <option value="<%= categorie %>"><%= categorie %></option>
+          <% } %>
+        </datalist>
+      </div>
+
+      <div class="form-group col-lg-6 d-flex-column">
+        <label for="descriere-filtru-input">Cauta dupa descriere:</label>
+        <textarea name="descriere-filtru-input" id="descriere-filtru-input"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-6 d-column">
+        <p>Oras:</p>
+
+        <div class="group">
+          <label for="oras_initial-filtru-input">Niciun oras</label>
+          <input type="checkbox" name="oras" id="oras_initial-filtru-input" value="niciun_oras" checked>
+        </div>
+        <% for (let oras of locals.orase ) { %>
+          <div class="group">
+            <label for="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input"><%= oras %></label>
+            <input type="checkbox" name="oras" id="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input" value="<%= oras %>">
+          </div>
+        <% } %>
+      </div>
+  
+      <div class="form-group col-lg-6 d-column">
+        <p>Disponibilitate:</p>
+
+        <div class="group">
+          <label for="in_stoc-filtru-input">Toate:</label>
+          <input type="radio" name="disponibilitate" id="disponibilitate_toate-filtru-input" checked>
+        </div>
+        <div class="group">
+          <label for="in_stoc-filtru-input">In stoc:</label>
+          <input type="radio" name="disponibilitate" id="disponibilitate_in_stoc-filtru-input">
+        </div>
+        <div class="group">
+          <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
+          <input type="radio" name="disponibilitate" id="disponibilitate_in_afara_stoc-filtru-input">
+        </div>
+      </div>
+  
+      <div class="form-group col-lg-6 d-flex-column">
+        <label for="brand-filtru-input">Brand:</label>
+        <select name="brand-filtru-input" id="brand-filtru-input">
+          <option value="" selected>Niciun brand</option>
+          <% for (let brand of locals.branduri ) { %>
+            <option value="<%= brand.trim().replaceAll(' ', '-') %>"><%= brand %></option>
+          <% } %>
+        </select>
+      </div>
+  
+      <div class="form-group col-lg-6 d-flex-column">
+        <label for="tipuri-produse-filtru-input">Tipuri produse:</label>
+        <select name="tipuri-produse-filtru-input" id="tipuri-produse-filtru-input" multiple>
+          <option value="" selected>Niciun tip produs</option>
+          <% for (let tip_produs of locals.tipuri_produse ) { %>
+            <option value="<%= tip_produs.trim().replaceAll(' ', '-') %>"><%= tip_produs %></option>
+          <% } %>
+        </select>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button class="filtreaza btn p-0">Filtreaza</button> <br />
+      <button class="reseteaza btn p-0">Reseteaza</button> <br />
+      <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
+      <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
+    </div>
   </section>
 
   <section class="produse">
