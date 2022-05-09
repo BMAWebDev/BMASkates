@@ -6,13 +6,94 @@
   <section id="title-section">
     <h2 class="page-title">Produse</h2>
   </section>
+  
+  <section id="filtre">
+    <div class="from-group">
+      <label for="search-name-filter-input">Cauta dupa nume:</label>
+      <input type="text" id="search-name-filter-input">
+    </div>
+
+    <div class="form-group">
+      <label for="price-filter-input">Pret:</label>
+      <span id="minVal"><%= locals.pret_min %></span> 
+      <input type="range" id="price-filter-input" value="<%= locals.pret_min %>" min="<%= locals.pret_min %>"  max="<%= locals.pret_max %>"> 
+      <span id="maxVal"><%= locals.pret_max %></span> 
+      <span id="price-range-val">(0)</span>
+    </div>
+
+    <div class="form-group">
+      <label for="categorie">Categorie:</label>
+      <input list="categorii" id="categorie-filtru-input">
+
+      <datalist id="categorii">
+        <% for (let categorie of locals.header_categorii) { %>
+          <option value="<%= categorie %>"><%= categorie %></option>
+        <% } %>
+      </datalist>
+    </div>
+
+    <div class="from-group">
+      <p>Disponibilitate:</p>
+
+      <label for="in_stoc-filtru-input">Toate:</label>
+      <input type="radio" name="disponibilitate" id="disponibilitate_toate-filtru-input" checked>
+
+      <label for="in_stoc-filtru-input">In stoc:</label>
+      <input type="radio" name="disponibilitate" id="disponibilitate_in_stoc-filtru-input">
+
+      <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
+      <input type="radio" name="disponibilitate" id="disponibilitate_in_afara_stoc-filtru-input">
+    </div>
+
+    <div class="form-group">
+      <p>Oras:</p>
+      <label for="oras_initial-filtru-input">Niciun oras</label>
+      <input type="checkbox" name="oras" id="oras_initial-filtru-input" value="niciun_oras" checked>
+      <% for (let oras of locals.orase ) { %>
+        <label for="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input"><%= oras %></label>
+        <input type="checkbox" name="oras" id="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input" value="<%= oras %>">
+      <% } %>
+    </div>
+
+    <div class="from-group">
+      <label for="descriere-filtru-input">Cauta dupa descriere:</label>
+      <textarea name="descriere-filtru-input" id="descriere-filtru-input"></textarea>
+    </div>
+
+    <div class="from-group">
+      <label for="brand-filtru-input">Brand:</label>
+      <select name="brand-filtru-input" id="brand-filtru-input">
+        <option value="" selected>Niciun brand</option>
+        <% for (let brand of locals.branduri ) { %>
+          <option value="<%= brand.trim().replaceAll(' ', '-') %>"><%= brand %></option>
+        <% } %>
+      </select>
+    </div>
+
+    <div class="from-group">
+      <label for="tipuri-produse-filtru-input">Tipuri produse:</label>
+      <select name="tipuri-produse-filtru-input" id="tipuri-produse-filtru-input" multiple>
+        <option value="" selected>Niciun tip produs</option>
+        <% for (let tip_produs of locals.tipuri_produse ) { %>
+          <option value="<%= tip_produs.trim().replaceAll(' ', '-') %>"><%= tip_produs %></option>
+        <% } %>
+      </select>
+    </div>
+    
+    <p>
+      <button id="filtreaza">Filtreaza</button> 
+      <button id="reseteaza">Reseteaza</button><br/>
+      <button id="sortCrescNumePret">Sorteaza crescator dupa nume si pret</button>
+      <button id="sortDescNumePret">Sorteaza descrescator dupa nume si pret</button>
+    </p>
+  </section>
 
   <section class="produse">
     <div class="row">
       <% for(let produs of locals.produse) { %>
         <article id="artc-<%= produs.id %>" class="col-lg-4 produs <%= produs.categorie %>">
           <div class="master-container">
-            <a href="/produse/<%= produs.id %>"><h3 class="titlu-produs">Nume: <%= produs.nume %></h3></a>
+            <a href="/produse/<%= produs.id %>"><h3 class="titlu-produs"><%= produs.nume %></h3></a>
             <div class="disk column-1">
               <a href="/produse/<%= produs.id %>"><img class="imagine-produs" src="/img/produse/<%= produs.imagine %>" alt=""></a>
               

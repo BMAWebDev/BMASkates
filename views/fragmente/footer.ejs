@@ -12,5 +12,10 @@
         <small>&copy; BMASkates <time datetime="2022-03-14 22:55">29 Martie 2022</time>.</small>
       </div>
     </footer>
+
+    <% if(locals.hasJSfile) { %>
+      <!-- la fel ca la css in head -->
+      <script src="/js/<%= locals.page.slice(1) %>.js"></script>
+    <% } %>
   </body>
 </html>
