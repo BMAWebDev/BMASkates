@@ -17,6 +17,11 @@
 #produse-page .filtre .buttons-container {
   margin: 15px 0;
 }
+#produse-page .filtre .exista-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
 #produse-page .produse .produs {
   margin-bottom: 50px;
   padding: 0;
