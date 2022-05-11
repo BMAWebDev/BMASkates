@@ -139,7 +139,5 @@ const calcSumaPreturi = () => {
   setTimeout(() => {
     sumaPreturiContainer.style.opacity = '0';
   }, 2000);
-
-  console.log(sumaPreturiContainer);
 };
 calcSumaPreturi();
