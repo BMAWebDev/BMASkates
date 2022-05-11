@@ -87,3 +87,59 @@ function resetFilters() {
 }
 const btnReset = document.querySelector('.reseteaza');
 btnReset.addEventListener('click', resetFilters);
+
+function sortParam(way = 'asc') {
+  let url = '';
+  if (window.location.href.includes('&')) {
+    if (!window.location.href.includes('&sort=')) {
+      url = `${window.location.origin}/produse${window.location.search}&sort=${way}`;
+    } else {
+      let mid = window.location.href.slice(window.location.href.indexOf('&sort='));
+      url = window.location.href.replace(mid, `&sort=${way}`);
+    }
+  } else {
+    if (!window.location.href.includes('sort=')) {
+      url = `${window.location.origin}/produse?sort=${way}`;
+    } else {
+      let mid = window.location.href.slice(window.location.href.indexOf('sort='));
+      url = window.location.href.replace(mid, `sort=${way}`);
+    }
+  }
+
+  window.location.href = url;
+}
+
+const sortCresc = document.querySelector('.sortCresc');
+const sortDesc = document.querySelector('.sortDesc');
+
+sortCresc.addEventListener('click', () => sortParam('asc'));
+sortDesc.addEventListener('click', () => sortParam('dsc'));
+
+// calculeaza suma tuturor preturilor
+const calcSumaPreturi = () => {
+  let sumaPreturi = 0;
+  document.querySelectorAll('.pret-input').forEach((input) => (sumaPreturi += parseFloat(input.value)));
+
+  const sumaPreturiContainer = document.createElement('div');
+  const textContent = document.createTextNode(`Suma tuturor produselor: ${sumaPreturi}`);
+  sumaPreturiContainer.appendChild(textContent);
+
+  // stiluri
+  sumaPreturiContainer.style.position = 'fixed';
+  sumaPreturiContainer.style.bottom = '0px';
+  sumaPreturiContainer.style.left = '0px';
+  sumaPreturiContainer.style.display = 'block';
+  sumaPreturiContainer.style.background = 'yellow';
+  sumaPreturiContainer.style.padding = '10px 15px';
+  sumaPreturiContainer.style.opacity = '1';
+  sumaPreturiContainer.style.transition = 'opacity 2s';
+
+  document.body.appendChild(sumaPreturiContainer);
+
+  setTimeout(() => {
+    sumaPreturiContainer.style.opacity = '0';
+  }, 2000);
+
+  console.log(sumaPreturiContainer);
+};
+calcSumaPreturi();

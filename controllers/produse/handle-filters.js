@@ -1,5 +1,32 @@
 const { closestMatch } = require('./get-closest-match');
 
+const customSort = (queriedProducts, way = 'asc') => {
+  return queriedProducts.sort((a, b) => {
+    if (way == 'asc') {
+      const first = parseInt(a.cantitate) / parseFloat(a.pret);
+      const second = parseInt(b.cantitate) / parseFloat(b.pret);
+
+      if (first > second) {
+        return 1;
+      } else if (first == second) {
+        if (a.tip_produs.localeCompare(b.tip_produs)) return 1;
+
+        return -1;
+      }
+    } else if (way == 'dsc') {
+      const first = parseInt(a.cantitate) / parseFloat(a.pret);
+      const second = parseInt(b.cantitate) / parseFloat(b.pret);
+
+      if (first < second) {
+        return 1;
+      } else if (a.tip_produs.localeCompare(b.tip_produs)) return -1;
+
+      return 1;
+    }
+    return -1;
+  });
+};
+
 module.exports = (url, products) => {
   const params = url[1].split('&');
 
@@ -71,6 +98,8 @@ module.exports = (url, products) => {
           queriedProducts = queriedProducts.filter((e) => e.cantitate <= 20 && e.in_stoc);
         }
       } else return;
+    } else if (filter[0] == 'sort') {
+      queriedProducts = customSort(queriedProducts, filter[1]);
     }
   });
 

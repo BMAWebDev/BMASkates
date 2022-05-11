@@ -118,8 +118,8 @@
       <div class="buttons-container col-lg-6">
         <button class="filtreaza btn p-0">Filtreaza</button> <br />
         <button class="reseteaza btn p-0">Reseteaza</button> <br />
-        <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
-        <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
+        <button class="sortCresc btn p-0">Sorteaza crescator dupa raport cantitate/pret si nume</button> <br />
+        <button class="sortDesc btn p-0">Sorteaza descrescator dupa raport cantitate/pret si nume</button> <br />
       </div>
     </div>
   </section>
@@ -142,6 +142,7 @@
                   <li class="caracteristica">
                     <span class="bold">Pret:</span>
                     <%= produs.pret %>
+                    <input type="number" value="<%= produs.pret %>" class="pret-input" hidden>
                   </li>
                   <li class="caracteristica">
                     <span class="bold">Brand:</span>
