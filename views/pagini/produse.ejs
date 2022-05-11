@@ -63,15 +63,15 @@
         <p>Disponibilitate:</p>
 
         <div class="group">
-          <label for="in_stoc-filtru-input">Toate:</label>
+          <label for="disponibilitate_toate-filtru-input">Toate:</label>
           <input type="radio" name="disponibilitate" value="" id="disponibilitate_toate-filtru-input" checked>
         </div>
         <div class="group">
-          <label for="in_stoc-filtru-input">In stoc:</label>
+          <label for="disponibilitate_in_stoc-filtru-input">In stoc:</label>
           <input type="radio" name="disponibilitate" value="in_stoc" id="disponibilitate_in_stoc-filtru-input">
         </div>
         <div class="group">
-          <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
+          <label for="disponibilitate_in_afara_stoc-filtru-input">In afara stocului:</label>
           <input type="radio" name="disponibilitate" value="in_afara_stocului" id="disponibilitate_in_afara_stoc-filtru-input">
         </div>
       </div>
@@ -97,11 +97,30 @@
       </div>
     </div>
 
-    <div class="buttons-container">
-      <button class="filtreaza btn p-0">Filtreaza</button> <br />
-      <button class="reseteaza btn p-0">Reseteaza</button> <br />
-      <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
-      <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
+    <div class="row">
+      <div class="form-group col-lg-6 d-column">
+        <p>Cantitate:</p>
+
+        <div class="group">
+          <label for="cantitate_toate-filtru-input">Toate:</label>
+          <input type="radio" name="cantitate" value="" id="cantitate_toate-filtru-input" checked>
+        </div>
+        <div class="group">
+          <label for="cantitate_suficienta-filtru-input">Suficienta:</label>
+          <input type="radio" name="cantitate" value="suficienta" id="cantitate_suficienta-filtru-input">
+        </div>
+        <div class="group">
+          <label for="cantitate_in_stoc-filtru-input">Limitata:</label>
+          <input type="radio" name="cantitate" value="limitata" id="cantitate_in_stoc-filtru-input">
+        </div>
+      </div>
+
+      <div class="buttons-container col-lg-6">
+        <button class="filtreaza btn p-0">Filtreaza</button> <br />
+        <button class="reseteaza btn p-0">Reseteaza</button> <br />
+        <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
+        <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
+      </div>
     </div>
   </section>
   
@@ -132,6 +151,12 @@
                     <span class="bold">In stoc:</span>
                     <%= produs.in_stoc ? 'Da' : 'Nu' %>
                   </li>
+                  <% if(produs.in_stoc) { %>
+                    <li class="caracteristica">
+                      <span class="bold">Cantitate:</span>
+                      <%= produs.cantitate > 20 ? 'Suficienta' : 'Limitata' %>
+                    </li>
+                  <% } %>
                   <li class="caracteristica">
                     <span class="bold">TVA inclus:</span>
                     <%= produs.tva ? 'Da' : 'Nu' %>

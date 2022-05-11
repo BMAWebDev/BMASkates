@@ -63,6 +63,14 @@ module.exports = (url, products) => {
           else return;
         });
       else return;
+    } else if (filter[0] == 'cantitate' && filter[1] != 'toate') {
+      if (queriedProducts.length) {
+        if (filter[1] == 'suficienta') {
+          queriedProducts = queriedProducts.filter((e) => e.cantitate > 20 && e.in_stoc);
+        } else {
+          queriedProducts = queriedProducts.filter((e) => e.cantitate <= 20 && e.in_stoc);
+        }
+      } else return;
     }
   });
 

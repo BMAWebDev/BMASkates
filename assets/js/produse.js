@@ -3,7 +3,6 @@ const priceInput = document.querySelector('#price-filter-input');
 const categorieInput = document.querySelector('#categorie-filtru-input');
 const descriereInput = document.querySelector('#descriere-filtru-input');
 const oraseInput = document.querySelectorAll('.oras-filter-input');
-const disponibilitateInput = document.querySelector('#disponibilitate_toate-filtru-input');
 const brandSelect = document.querySelector('#brand-filtru-input');
 const tipuriSelect = document.querySelector('#tipuri-produse-filtru-input');
 
@@ -69,6 +68,10 @@ function getFilterQuery() {
     });
     params.push(`tip_produs=${tipuriQuery[0] != '' ? tipuriQuery.join('|') : 'toate'}`);
   }
+
+  const cantitateInput = document.querySelector('input[name="cantitate"]:checked');
+  if (cantitateInput.value) params.push(`cantitate=${cantitateInput.value == 'suficienta' ? 'suficienta' : 'limitata'}`);
+  else params.push('cantitate=toate');
 
   return `${path}?${params.join('&')}`;
 }
