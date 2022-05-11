@@ -7,167 +7,182 @@
     <h2 class="page-title">Produse</h2>
   </section>
   
-  <section class="filtre">
-    <div class="row">
-      <div class="form-group col-lg-6 d-flex-column">
-        <label for="search-name-filter-input">Cauta dupa nume:</label>
-        <input type="text" id="search-name-filter-input" class="filter-input">
-      </div>
-  
-      <div class="form-group col-lg-6">
-        <label for="price-filter-input">Pret:</label>
-        <span id="minVal"><%= locals.pret_min %></span> 
-        <input type="range" id="price-filter-input" value="<%= locals.pret_min %>" min="<%= locals.pret_min %>" max="<%= locals.pret_max %>" class="filter-input"> 
-        <span id="maxVal"><%= locals.pret_max %></span> 
-        <span id="price-range-val">(0)</span>
-      </div>
-  
-      <div class="form-group col-lg-6 d-flex-column">
-        <label for="categorie">Categorie:</label>
-        <input list="categorii" id="categorie-filtru-input" class="filter-input">
-  
-        <datalist id="categorii">
-          <% for (let categorie of locals.header_categorii) { %>
-            <option value="<%= categorie %>"><%= categorie %></option>
-          <% } %>
-        </datalist>
-      </div>
-
-      <div class="form-group col-lg-6 d-flex-column">
-        <label for="descriere-filtru-input">Cauta dupa descriere:</label>
-        <textarea name="descriere-filtru-input" id="descriere-filtru-input" class="filter-input"></textarea>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group col-lg-6 d-column">
-        <p>Oras:</p>
-
-        <div class="group">
-          <label for="oras_initial-filtru-input">Toate orasele</label>
-          <input type="checkbox" name="oras" id="oras_initial-filtru-input" value="" checked class="oras-filter-input">
+  <% if(!locals.notFound) { %>
+    <section class="filtre">
+      <div class="row">
+        <div class="form-group col-lg-6 d-flex-column">
+          <label for="search-name-filter-input">Cauta dupa nume:</label>
+          <input type="text" id="search-name-filter-input" class="filter-input">
         </div>
-        <% for (let oras of locals.orase ) { %>
+    
+        <div class="form-group col-lg-6">
+          <label for="price-filter-input">Pret:</label>
+          <span id="minVal"><%= locals.pret_min %></span> 
+          <input type="range" id="price-filter-input" value="<%= locals.pret_max %>" min="<%= locals.pret_min %>" max="<%= locals.pret_max %>" class="filter-input"> 
+          <span id="maxVal"><%= locals.pret_max %></span> 
+          <span id="price-range-val">(<%= locals.pret_max %>)</span>
+        </div>
+    
+        <div class="form-group col-lg-6 d-flex-column">
+          <label for="categorie">Categorie:</label>
+          <input list="categorii" id="categorie-filtru-input" class="filter-input">
+    
+          <datalist id="categorii">
+            <% for (let categorie of locals.header_categorii) { %>
+              <option value="<%= categorie %>"><%= categorie %></option>
+            <% } %>
+          </datalist>
+        </div>
+
+        <div class="form-group col-lg-6 d-flex-column">
+          <label for="descriere-filtru-input">Cauta dupa descriere:</label>
+          <textarea name="descriere-filtru-input" id="descriere-filtru-input" class="filter-input"></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-6 d-column">
+          <p>Oras:</p>
+
           <div class="group">
-            <label for="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input"><%= oras %></label>
-            <input type="checkbox" name="oras" id="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input" value="<%= oras %>" class="oras-filter-input">
-            <div class="exista-group d-none">
-              <label>TVA inclus: <input type="radio" name="tva" id="cu_tva"></label>
-              <label>Fara TVA: <input type="radio" name="tva" id="fara_tva"></label>
-            </div>
+            <label for="oras_initial-filtru-input">Toate orasele</label>
+            <input type="checkbox" name="oras" id="oras_initial-filtru-input" value="" checked class="oras-filter-input">
           </div>
-        <% } %>
-      </div>
-  
-      <div class="form-group col-lg-6 d-column">
-        <p>Disponibilitate:</p>
-
-        <div class="group">
-          <label for="in_stoc-filtru-input">Toate:</label>
-          <input type="radio" name="disponibilitate" id="disponibilitate_toate-filtru-input" checked>
-        </div>
-        <div class="group">
-          <label for="in_stoc-filtru-input">In stoc:</label>
-          <input type="radio" name="disponibilitate" value="in_stoc" id="disponibilitate_in_stoc-filtru-input">
-        </div>
-        <div class="group">
-          <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
-          <input type="radio" name="disponibilitate" value="in_afara_stocului" id="disponibilitate_in_afara_stoc-filtru-input">
-        </div>
-      </div>
-  
-      <div class="form-group col-lg-6 d-flex-column">
-        <label for="brand-filtru-input">Brand:</label>
-        <select name="brand-filtru-input" id="brand-filtru-input">
-          <option value="" selected>Niciun brand</option>
-          <% for (let brand of locals.branduri ) { %>
-            <option value="<%= brand.trim().replaceAll(' ', '-') %>"><%= brand %></option>
+          <% for (let oras of locals.orase ) { %>
+            <div class="group">
+              <label for="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input"><%= oras %></label>
+              <input type="checkbox" name="oras" id="oras_<%= oras.trim().replaceAll(' ', '-') %>-filtru-input" value="<%= oras %>" class="oras-filter-input">
+              <div class="exista-group d-none">
+                <label>TVA inclus: <input type="radio" name="tva_<%= oras %>" id="cu_tva" checked></label>
+                <label>Fara TVA: <input type="radio" name="tva_<%= oras %>" id="fara_tva"></label>
+              </div>
+            </div>
           <% } %>
-        </select>
-      </div>
-  
-      <div class="form-group col-lg-6 d-flex-column">
-        <label for="tipuri-produse-filtru-input">Tipuri produse:</label>
-        <select name="tipuri-produse-filtru-input" id="tipuri-produse-filtru-input" multiple>
-          <option value="" selected>Niciun tip produs</option>
-          <% for (let tip_produs of locals.tipuri_produse ) { %>
-            <option value="<%= tip_produs.trim().replaceAll(' ', '-') %>"><%= tip_produs %></option>
-          <% } %>
-        </select>
-      </div>
-    </div>
+        </div>
+    
+        <div class="form-group col-lg-6 d-column">
+          <p>Disponibilitate:</p>
 
-    <div class="buttons-container">
-      <button class="filtreaza btn p-0">Filtreaza</button> <br />
-      <button class="reseteaza btn p-0">Reseteaza</button> <br />
-      <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
-      <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
-    </div>
-  </section>
+          <div class="group">
+            <label for="in_stoc-filtru-input">Toate:</label>
+            <input type="radio" name="disponibilitate" value="" id="disponibilitate_toate-filtru-input" checked>
+          </div>
+          <div class="group">
+            <label for="in_stoc-filtru-input">In stoc:</label>
+            <input type="radio" name="disponibilitate" value="in_stoc" id="disponibilitate_in_stoc-filtru-input">
+          </div>
+          <div class="group">
+            <label for="in_afara_stoc-filtru-input">In afara stocului:</label>
+            <input type="radio" name="disponibilitate" value="in_afara_stocului" id="disponibilitate_in_afara_stoc-filtru-input">
+          </div>
+        </div>
+    
+        <div class="form-group col-lg-6 d-flex-column">
+          <label for="brand-filtru-input">Brand:</label>
+          <select name="brand-filtru-input" id="brand-filtru-input">
+            <option value="" selected>Niciun brand</option>
+            <% for (let brand of locals.branduri ) { %>
+              <option value="<%= brand.trim().replaceAll(' ', '-') %>"><%= brand %></option>
+            <% } %>
+          </select>
+        </div>
+    
+        <div class="form-group col-lg-6 d-flex-column">
+          <label for="tipuri-produse-filtru-input">Tipuri produse:</label>
+          <select name="tipuri-produse-filtru-input" id="tipuri-produse-filtru-input" multiple>
+            <option value="" selected>Niciun tip produs</option>
+            <% for (let tip_produs of locals.tipuri_produse ) { %>
+              <option value="<%= tip_produs.trim().replaceAll(' ', '-') %>"><%= tip_produs %></option>
+            <% } %>
+          </select>
+        </div>
+      </div>
+
+      <div class="buttons-container">
+        <button class="filtreaza btn p-0">Filtreaza</button> <br />
+        <button class="reseteaza btn p-0">Reseteaza</button> <br />
+        <button class="sortCresc btn p-0">Sorteaza crescator dupa nume si pret</button> <br />
+        <button class="sortDesc btn p-0">Sorteaza descrescator dupa nume si pret</button> <br />
+      </div>
+    </section>
+  <% } %>
 
   <section class="produse">
     <div class="row">
-      <% for(let produs of locals.produse) { %>
-        <article id="artc-<%= produs.id %>" class="col-lg-4 produs <%= produs.categorie %>">
-          <div class="master-container">
-            <a href="/produse/<%= produs.id %>"><h3 class="titlu-produs"><%= produs.nume %></h3></a>
-            <div class="disk column-1">
-              <a href="/produse/<%= produs.id %>"><img class="imagine-produs" src="/img/produse/<%= produs.imagine %>" alt=""></a>
-              
-              <ul class="caracteristici">
-                <li class="caracteristica">
-                  <span class="bold">Pret:</span>
-                  <%= produs.pret %>
-                </li>
-                <li class="caracteristica">
-                  <span class="bold">Brand:</span>
-                  <%= produs.brand %>
-                </li>
-                <li class="caracteristica">
-                  <span class="bold">In stoc:</span>
-                  <%= produs.in_stoc ? 'Da' : 'Nu' %>
-                </li>
-                <li class="caracteristica">
-                  <span class="bold">TVA inclus:</span>
-                  <%= produs.tva ? 'Da' : 'Nu' %>
-                </li>
-                <% if(produs.in_stoc) { %>
+      <% 
+        if(!locals.notFound){
+          for(let produs of locals.produse) { 
+          %>
+          <article id="artc-<%= produs.id %>" class="col-lg-4 produs <%= produs.categorie %>">
+            <div class="master-container">
+              <a href="/produse/<%= produs.id %>"><h3 class="titlu-produs"><%= produs.nume %></h3></a>
+              <div class="disk column-1">
+                <a href="/produse/<%= produs.id %>"><img class="imagine-produs" src="/img/produse/<%= produs.imagine %>" alt=""></a>
+                
+                <ul class="caracteristici">
                   <li class="caracteristica">
-                    <span class="bold">Magazine disponibile:</span>
-                    <%= produs.magazine_stoc.join(', ') %>
+                    <span class="bold">Pret:</span>
+                    <%= produs.pret %>
                   </li>
-                <% } %>
-                <li class="caracteristica">
-                  <span class="bold">Data aparitiei:</span>
-                  <time datetime="<% produs.data_adaugare %>">
-                    <%
-                      let dataDB = new Date(produs.data_adaugare.toString());
-                      let weekDay = dataDB.toLocaleDateString("ro", { weekday: "long" })
-                      let data = dataDB.toLocaleDateString("ro", { day: "numeric", month: "long", year: "numeric" })
-      
-                      const fullDate = `${data}, ${weekDay}`;
-                      __append(fullDate);
-                    %>
-                  </time>
-                </li>
-              </ul>
-            </div>
-            <div class="disk column-2">
-              <div>
-                <span class="bold">Categorie:</span> 
-                <%= produs.categorie %>
+                  <li class="caracteristica">
+                    <span class="bold">Brand:</span>
+                    <%= produs.brand %>
+                  </li>
+                  <li class="caracteristica">
+                    <span class="bold">In stoc:</span>
+                    <%= produs.in_stoc ? 'Da' : 'Nu' %>
+                  </li>
+                  <li class="caracteristica">
+                    <span class="bold">TVA inclus:</span>
+                    <%= produs.tva ? 'Da' : 'Nu' %>
+                  </li>
+                  <% if(produs.in_stoc) { %>
+                    <li class="caracteristica">
+                      <span class="bold">Magazine disponibile:</span>
+                      <%= produs.magazine_stoc.join(', ') %>
+                    </li>
+                  <% } %>
+                  <li class="caracteristica">
+                    <span class="bold">Data aparitiei:</span>
+                    <time datetime="<% produs.data_adaugare %>">
+                      <%
+                        let dataDB = new Date(produs.data_adaugare.toString());
+                        let weekDay = dataDB.toLocaleDateString("ro", { weekday: "long" })
+                        let data = dataDB.toLocaleDateString("ro", { day: "numeric", month: "long", year: "numeric" })
+        
+                        const fullDate = `${data}, ${weekDay}`;
+                        __append(fullDate);
+                      %>
+                    </time>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <span class="bold">Descriere:</span>
-                <%= produs.descriere %>
+              <div class="disk column-2">
+                <div>
+                  <span class="bold">Categorie:</span> 
+                  <%= produs.categorie %>
+                </div>
+                <div>
+                  <span class="bold">Descriere:</span>
+                  <%= produs.descriere %>
+                </div>
               </div>
             </div>
-          </div>
-        </article>
-      <% } %>
+          </article>
+          <% 
+          } 
+        }
+        else {
+          %>
+            <div class="col-lg-12">
+              <h2>Niciun produs nu indeplineste cerintele tale.</h2>
+              <a href="<%= locals.urlRedirectNotFound %>">Click aici pentru a te intoarce inapoi.</a>  
+            </div>
+          <%
+        }
+      %>
     </div>
   </section>
-
 </main>
 
 <%- include('../fragmente/footer') %>
