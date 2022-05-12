@@ -21,7 +21,6 @@ server.use(
   session({
     secret: 'abcdefg',
     resave: true,
-    cookie: { maxAge: 8 * 60 * 60 * 1000 }, // 8 hours
     saveUninitialized: true,
   })
 );

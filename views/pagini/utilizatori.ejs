@@ -1,0 +1,30 @@
+<%- include('../fragmente/header') %>
+
+<main id="users-page" class="page-content container">
+  <%- include('../fragmente/watermark') %>
+
+  <table class="users-list">
+    <thead>
+      <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Username</th>
+        <th>E-mail</th>
+        <th>Actiuni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let user of locals.users) { %>
+        <tr>
+          <td><%= user.nume %></td>
+          <td><%= user.prenume %></td>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td class="delete-user" data-userid="<%= user.id %>">Sterge utilizator</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</main>
+
+<%- include('../fragmente/footer') %>

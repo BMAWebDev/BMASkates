@@ -46,6 +46,11 @@
           </a>
         <% } %>
       </li>
+      <% if(locals.user?.rol == 'admin') { %>
+        <li class="first-child">
+          <a href="/utilizatori" class="selector">Utilizatori</a>
+        </li>
+      <% } %>
       <li class="first-child">
         <a href="/contact" class="selector">Contact</a>
       </li>
