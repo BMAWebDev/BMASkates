@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS users (
    rol roles NOT NULL DEFAULT 'default',
    nume VARCHAR(100) NOT NULL,
    prenume VARCHAR(100) NOT NULL,
+   ocupatie VARCHAR(50),
+   cale_imagine VARCHAR(500),
    cod_confirmare character varying(500),
    confirmat_mail boolean DEFAULT false,
    data_adaugare TIMESTAMP DEFAULT current_timestamp

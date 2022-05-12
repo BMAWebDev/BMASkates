@@ -1,7 +1,7 @@
 const { closestMatch } = require('./get-closest-match');
 
 const customSort = (queriedProducts, way = 'asc') => {
-  return queriedProducts.sort((a, b) => {
+  queriedProducts.sort((a, b) => {
     if (way == 'asc') {
       const first = parseInt(a.cantitate) / parseFloat(a.pret);
       const second = parseInt(b.cantitate) / parseFloat(b.pret);
@@ -25,6 +25,8 @@ const customSort = (queriedProducts, way = 'asc') => {
     }
     return -1;
   });
+
+  return queriedProducts;
 };
 
 module.exports = (url, products) => {

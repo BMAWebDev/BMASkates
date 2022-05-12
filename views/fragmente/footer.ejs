@@ -15,7 +15,17 @@
 
     <% if(locals.hasJSfile) { %>
       <!-- la fel ca la css in head -->
-      <script src="/js/<%= locals.page.slice(1) %>.js"></script>
+      <% 
+        if(locals.JSfiles?.length) {
+          for(let file of locals.JSfiles) { 
+          %>
+          <script src="/js/<%= file %>.js"></script>
+          <% } 
+        } else { %>
+          <script src="/js/<%= locals.page.slice(1) %>.js"></script>
+        <% 
+        } 
+      %>
     <% } %>
   </body>
 </html>

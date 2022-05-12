@@ -17,6 +17,42 @@
       "titlu": "Eroare baza date",
       "text": "Reveniti mai tarziu!",
       "imagine": "interzis.png"
+    },
+    {
+      "id": 2,
+      "titlu": "Eroare formular:",
+      "text": "Campurile obligatorii nu au fost completate.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 3,
+      "titlu": "Eroare formular:",
+      "text": "Parolele nu se potrivesc.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 4,
+      "titlu": "Eroare formular:",
+      "text": "Numele si prenumele nu au un format valid.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 5,
+      "titlu": "Eroare formular:",
+      "text": "Emailul nu este valid.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 6,
+      "titlu": "Eroare formular:",
+      "text": "Usernameul nu este valid.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 7,
+      "titlu": "Eroare formular:",
+      "text": "Contul exista deja.",
+      "imagine": "interzis.png"
     }
   ]
 }

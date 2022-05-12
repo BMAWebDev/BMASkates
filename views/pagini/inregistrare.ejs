@@ -1,0 +1,9 @@
+<%- include('../fragmente/header') %>
+
+<main id="inregistrare-page" class="page-content container">
+  <%- include('../fragmente/watermark') %>
+
+  <%- include('../fragmente/formular', { action: '/inregistrare' }) %>
+</main>
+
+<%- include('../fragmente/footer', { hasJSfile: true, JSfiles: ['formular'] }) %>
