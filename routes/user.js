@@ -7,3 +7,4 @@ module.exports = router;
 
 router.post('/inregistrare', User.register);
 router.post('/login', User.login);
+router.get('/confirmare-token/:username/:token', User.confirmToken);

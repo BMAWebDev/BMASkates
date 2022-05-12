@@ -67,9 +67,15 @@
       "imagine": "interzis.png"
     },
     {
-      "id": 9,
+      "id": 10,
       "titlu": "Eroare formular:",
       "text": "Parola este incorecta.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 11,
+      "titlu": "Eroare confirmare:",
+      "text": "Tokenul este invalid.",
       "imagine": "interzis.png"
     }
   ]
