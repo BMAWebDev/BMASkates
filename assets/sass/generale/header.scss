@@ -7,6 +7,21 @@
   color: #fff;
   width: 100%;
 
+  .user {
+    width: max-content;
+
+    #logout {
+      display: none;
+    }
+
+    &:hover {
+      #logout {
+        display: block;
+        cursor: pointer;
+      }
+    }
+  }
+
   // Desktop
   .nav {
     display: flex;

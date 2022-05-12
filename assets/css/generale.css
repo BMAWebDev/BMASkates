@@ -5,6 +5,16 @@
   color: #fff;
   width: 100%;
 }
+#page-header .user {
+  width: max-content;
+}
+#page-header .user #logout {
+  display: none;
+}
+#page-header .user:hover #logout {
+  display: block;
+  cursor: pointer;
+}
 #page-header .nav {
   display: flex;
   justify-content: space-between;

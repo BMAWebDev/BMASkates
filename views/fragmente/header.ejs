@@ -31,7 +31,20 @@
         <a href="/inregistrare" class="selector">Inregistrare</a>
       </li>
       <li class="first-child">
-        <a href="/login" class="selector">Login</a>
+        <% if(locals.user) { %>
+          <div class="user">
+            <div class="user-details-container d-flex">
+              <i class="fa-solid fa-user"></i>
+              <span class="prenume" style="margin-left: 10px; margin-right: 10px;"><%= locals.user.prenume %></span>
+              <span class="nume"><%= locals.user.nume %></span>
+            </div>
+            <div id="logout">Logout</div>
+          </div>
+        <% } else { %>
+          <a href="/login" class="selector">
+            Login
+          </a>
+        <% } %>
       </li>
       <li class="first-child">
         <a href="/contact" class="selector">Contact</a>

@@ -1,6 +1,7 @@
 const express = require('express');
 const server = express();
 const router = require('./router');
+const session = require('express-session');
 
 require('dotenv').config();
 
@@ -14,6 +15,16 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 server.use(express.static('assets'));
+
+// pentru req.session
+server.use(
+  session({
+    secret: 'abcdefg',
+    resave: true,
+    cookie: { maxAge: 8 * 60 * 60 * 1000 }, // 8 hours
+    saveUninitialized: true,
+  })
+);
 
 // ruteaza tot
 server.use('/', router);

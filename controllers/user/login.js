@@ -27,6 +27,8 @@ module.exports = (req, res) => {
 
       res.status(400).render('pagini/eroare_generala');
     } else {
+      req.session.user = userConfirmedToken.rows[0];
+
       res.redirect('/');
     }
   });
