@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async (username, email, token) => {
-  var transp = nodemailer.createTransport({
+  const transp = nodemailer.createTransport({
     service: 'gmail',
     secure: false,
     auth: {
