@@ -2,7 +2,7 @@ const formidable = require('formidable');
 const { jsonErrorHandler } = require('../../middleware');
 const { isEmailValid, sendEmail, generateToken } = require('../../functions');
 const { db } = require('../../db');
-const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
 const fs = require('fs');
 
 module.exports = (req, res) => {
@@ -79,6 +79,7 @@ module.exports = (req, res) => {
 
       if (!errors) {
         const accountExistsQuery = await db.query(`select * from users where email='${email}' or username='${username}'`);
+
         // verifica daca userul exista
         if (accountExistsQuery.rows.length) {
           const { response } = jsonErrorHandler(req, res, 7); //contul exista deja
@@ -87,8 +88,7 @@ module.exports = (req, res) => {
           res.status(400).render('pagini/eroare_generala');
         } else {
           // daca nu, incepe adaugarea userului
-          const salt = 'bmaskates_2022';
-          const parolaCriptata = crypto.scryptSync(password, salt, 32).toString('hex');
+          const parolaCriptata = bcrypt.hashSync(password, 10);
 
           const columns = ['email', 'parola', 'username', 'rol', 'nume', 'prenume', 'ocupatie', 'cale_imagine', 'cod_confirmare', 'confirmat_mail', 'data_adaugare'];
 

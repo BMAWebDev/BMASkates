@@ -65,6 +65,12 @@
       "titlu": "Eroare formular:",
       "text": "Pentru a te putea conecta trebuie mai intai sa confirmi contul prin link-ul primit pe email.",
       "imagine": "interzis.png"
+    },
+    {
+      "id": 9,
+      "titlu": "Eroare formular:",
+      "text": "Parola este incorecta.",
+      "imagine": "interzis.png"
     }
   ]
 }
