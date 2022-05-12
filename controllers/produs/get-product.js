@@ -4,7 +4,7 @@ const { jsonErrorHandler } = require('../../middleware');
 module.exports = (req, res) => {
   const { id } = req.params;
 
-  db.query(`select * from products where id=${id}`, (err, resQuery) => {
+  db.query('select * from products where id=$1', [id], (err, resQuery) => {
     if (err) {
       const { errorID, response } = jsonErrorHandler(req, res); //errorID 404 pentru ca nu gaseste produsul
       res = response;
