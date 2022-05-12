@@ -26,7 +26,6 @@ module.exports = (req, res) => {
 
       let relativeImagePath = null;
       if (files.avatar.originalFilename) {
-        console.log(files);
         relativeImagePath = `/assets/uploads/${username}-${files.avatar.newFilename}.${files.avatar.mimetype.split('/')[1]}`;
         // absolute path
         const filePath = `${global.rootProjectLocation}/assets/uploads/${username}-${files.avatar.newFilename}.${files.avatar.mimetype.split('/')[1]}`;

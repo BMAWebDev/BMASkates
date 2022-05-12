@@ -53,6 +53,18 @@
       "titlu": "Eroare formular:",
       "text": "Contul exista deja.",
       "imagine": "interzis.png"
+    },
+    {
+      "id": 8,
+      "titlu": "Eroare formular:",
+      "text": "Contul nu exista.",
+      "imagine": "interzis.png"
+    },
+    {
+      "id": 9,
+      "titlu": "Eroare formular:",
+      "text": "Pentru a te putea conecta trebuie mai intai sa confirmi contul prin link-ul primit pe email.",
+      "imagine": "interzis.png"
     }
   ]
 }
