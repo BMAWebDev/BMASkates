@@ -4,7 +4,14 @@
   <%- include('../fragmente/watermark') %>
 
   <section id="prezentare" class="latest">
-    <h1 class="page-title">BMASkates. For those who like adrenaline.</h1>
+    <h1 class="page-title" style="font-size: 32px; text-align: center;">BMASkates. For those who like adrenaline.</h1>
+
+    <% if(locals.user){ %>
+      <div class="welcome-user" style="margin-bottom: 70px;">
+        <img height="64" src="<%= !locals.user.cale_imagine ? locals.user.cale_imagine : 'img/default-user-avatar.png'  %>" alt="">
+        <span style="font-size: 26px;">Bine ai venit, <%= locals.user.username %>!</span>
+      </div>
+    <% } %>
 
     <h2>Ultimul produs</h2>
     <a class="image-click" href="img/skateboard-enuff-icon-pink.jpg">
