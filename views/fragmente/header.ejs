@@ -33,11 +33,13 @@
       <li class="first-child">
         <% if(locals.user) { %>
           <div class="user">
-            <div class="user-details-container d-flex">
-              <i class="fa-solid fa-user"></i>
-              <span class="prenume" style="margin-left: 10px; margin-right: 10px;"><%= locals.user.prenume %></span>
-              <span class="nume"><%= locals.user.nume %></span>
-            </div>
+            <a href="/profil">
+              <div class="user-details-container d-flex">
+                <i class="fa-solid fa-user"></i>
+                <span class="prenume" style="margin-left: 10px; margin-right: 10px;"><%= locals.user.prenume %></span>
+                <span class="nume"><%= locals.user.nume %></span>
+              </div>
+            </a>
             <div id="logout">Logout</div>
           </div>
         <% } else { %>

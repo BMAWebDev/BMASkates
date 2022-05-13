@@ -8,7 +8,7 @@
 
     <% if(locals.user){ %>
       <div class="welcome-user" style="margin-bottom: 70px;">
-        <img height="64" src="<%= !locals.user.cale_imagine ? locals.user.cale_imagine : 'img/default-user-avatar.png'  %>" alt="">
+        <img height="64" src="<%= locals.user.cale_imagine ? locals.user.cale_imagine.slice(7) : 'img/default-user-avatar.png'  %>" alt="">
         <span style="font-size: 26px;">Bine ai venit, <%= locals.user.username %>!</span>
       </div>
     <% } %>

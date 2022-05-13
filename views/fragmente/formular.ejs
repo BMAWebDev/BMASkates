@@ -13,25 +13,43 @@
       </div>
     </div>
   <% } else { %>
+
+    <% if(locals.action == '/profil') { %>
+      <% if(!locals.user){%>
+        <script>
+          window.location.href = `${window.location.origin}/login`; //redirect catre login daca userul nu este logat
+        </script>
+      <% } else { %>
+        <div class="row">
+          <div class="col-lg-6 form-group">
+            <img width="256px" height="256px" src="<%= locals.user.cale_imagine ? locals.user.cale_imagine.slice(7) : 'img/default-user-avatar.png' %>" alt="">
+          </div>
+          <div class="col-lg-6 form-group">
+            <h1 style="font-size: 40px; margin-top: 15%;">Bine ai venit, <%= locals.user.username %>!</h1>
+          </div>
+        </div>
+      <% } %>
+    <% } %>
+
     <div class="row">
       <div class="col-lg-6 form-group">
         <label for="prenume">Prenume: *</label>
-        <input type="text" name="prenume" id="prenume" class="prenume-input" required />
+        <input type="text" name="prenume" id="prenume" value="<%= locals.user ? locals.user.prenume : '' %>" class="prenume-input" required />
       </div>
       <div class="col-lg-6 form-group">
         <label for="nume">Nume: *</label>
-        <input type="text" name="nume" id="nume" class="nume-input" required />
+        <input type="text" name="nume" id="nume" value="<%= locals.user ? locals.user.nume : '' %>" class="nume-input" required />
       </div>
     </div>
   
     <div class="row">
       <div class="col-lg-6 form-group">
         <label for="username">Username: *</label>
-        <input type="text" name="username" id="username" class="username-input" required />
+        <input type="text" name="username" id="username" value="<%= locals.user ? locals.user.username : '' %>" class="username-input" required />
       </div>
       <div class="col-lg-6 form-group">
         <label for="email">Email: *</label>
-        <input type="email" name="email" id="email" class="email-input" required />
+        <input type="email" name="email" id="email" value="<%= locals.user ? locals.user.email : '' %>" class="email-input" required />
       </div>
     </div>
   
@@ -50,17 +68,17 @@
       <div class="col-lg-6 form-group">
         <label for="ocupatie">Ocupatie:</label>
         <select name="ocupatie" id="ocupatie" class="ocupatie-input">
-          <option value="" selected>Nu doresc sa pun</option>
-          <option value="student">Student</option>
-          <option value="programator">Programator</option>
-          <option value="designer">Designer</option>
+          <option value="" <%= !locals.user?.ocupatie ? 'selected' : '' %> >Nu doresc sa pun</option>
+          <option value="student" <%= locals.user?.ocupatie == 'student' ? 'selected' : '' %> >Student</option>
+          <option value="programator" <%= locals.user?.ocupatie == 'programator' ? 'selected' : '' %> >Programator</option>
+          <option value="designer" <%= locals.user?.ocupatie == 'designer' ? 'selected' : '' %> >Designer</option>
         </select>
       </div>
       <div class="col-lg-6 form-group">
         <label for="role">Rol:</label>
         <select name="role" id="role" class="role-input">
-          <option value="default">Default</option>
-          <option value="admin">Admin</option>
+          <option value="default" <%= locals.user?.rol == 'default' ? 'selected' : '' %> >Default</option>
+          <option value="admin" <%= locals.user?.rol == 'admin' ? 'selected' : '' %> >Admin</option>
         </select>
       </div>
     </div>
@@ -71,10 +89,8 @@
         <input type="file" name="avatar" id="avatar" class="avatar-input" />
       </div>
       <div class="col-lg-6 form-group">
-        <button type="submit">Inregistreaza-te</button>
+        <button type="submit"><%= locals.user ? 'Actualizeaza' : 'Inregistreaza-te' %></button>
       </div>
     </div>
   <% } %>
-
-  
 </form>

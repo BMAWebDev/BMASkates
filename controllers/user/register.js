@@ -78,7 +78,7 @@ module.exports = (req, res) => {
       }
 
       if (!errors) {
-        const accountExistsQuery = await db.query(`select * from users where email='${email}' or username='${username}'`);
+        const accountExistsQuery = await db.query(`select * from users where email=$1 or username=$2`, [email, username]);
 
         // verifica daca userul exista
         if (accountExistsQuery.rows.length) {

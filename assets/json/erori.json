@@ -77,6 +77,12 @@
       "titlu": "Eroare confirmare:",
       "text": "Tokenul este invalid.",
       "imagine": "interzis.png"
+    },
+    {
+      "id": 12,
+      "titlu": "Eroare fisier:",
+      "text": "Imaginea nu a putut fi incarcata.",
+      "imagine": "interzis.png"
     }
   ]
 }
