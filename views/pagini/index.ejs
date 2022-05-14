@@ -74,10 +74,23 @@
   </section>
 
   <section id="informatii-utilizator">
-    <span>IP-ul tau curent este: <%= locals.ip %></span>
+    <p>IP-ul tau curent este: <%= locals.ip %></p>
+    <p>Locatia ta curenta este: <%= locals.locatie %></p>
   </section>
 
   <section id="informatii-site">
+
+    <h2>Informatii site:</h2>
+
+    <div class="time">
+      <p class="server-time">Server time: <%= locals.serverTime %></p>
+      <p class="local-time">Local time: <span class="local-time-value"></span></p>
+
+      <!-- scriptul asta e facut la final de proiect, scuzati daca deranjeaza ca nu e in fisier separat, nu mai pot -->
+      <script>
+        document.querySelector('.local-time-value').textContent = new Date().toLocaleTimeString('ro');
+      </script>
+    </div>
     <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores voluptatem illo velit reprehenderit. Reiciendis, culpa omnis. Quod voluptates culpa quos saepe eligendi veritatis repudiandae hic quis, quam nulla pariatur molestiae?</span>
     <!-- <h2>About <abbr title="Bardita Mihai Andrei">BMA</abbr>Skates</h2>
 
