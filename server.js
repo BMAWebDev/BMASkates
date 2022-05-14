@@ -7,6 +7,7 @@ require('dotenv').config();
 
 // seteaza calea catre proiect global
 global.rootProjectLocation = __dirname;
+global.protocol = process.env.protocol;
 global.domain = process.env.domain;
 
 server.set('view engine', 'ejs');

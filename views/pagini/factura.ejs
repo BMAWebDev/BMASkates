@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Factură</title>
+    <style>
+      body {
+        counter-reset: cnt;
+      }
+      #tabl {
+        border-collapse: collapse;
+      }
+      tr {
+        counter-increment: cnt;
+      }
+      #tabl td,
+      #tabl th {
+        border: 1px solid black;
+      }
+
+      p {
+        color: red;
+      }
+      #tabl::after {
+        content: 'Numar produse' counter(cnt);
+        display: block;
+      }
+    </style>
+    <link rel="stylesheet" href="<%= locals.protocol %>://<%= locals.domeniu %>/assets/css/factura.css" type="text/css" />
+  </head>
+  <body>
+    <h1>Factură BMASkates</h1>
+    <p>Stimate <%= `${locals.user.nume} ${locals.user.prenume}` %>, aveti aici lista de produse cumparate.</p>
+    <p>Data cumparare: <%= locals.data_cumparare %></p>
+
+    <table id="tabl">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nume produs</th>
+          <th>Pret</th>
+          <th>Cantitate</th>
+          <th>Brand</th>
+          <th>TVA inclus</th>
+          <th>Categorie</th>
+          <th>Descriere</th>
+          <th>QR</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% 
+          let suma = 0; 
+          for (let prod of locals.produse) { 
+            suma += parseFloat(prod.produs.pret) * parseInt(prod.cantitate); 
+            %>
+            <tr>
+              <td> 
+              </td>
+              <td><%= prod.produs.nume %></td>
+              <td><%= prod.produs.pret %></td>
+              <td><%= prod.cantitate %></td>
+              <td><%= prod.produs.brand %></td>
+              <td><%= prod.produs.tva %></td>
+              <td><%= prod.produs.categorie %></td>
+              <td><%= prod.produs.descriere %></td>
+            </tr>
+          <% 
+          } 
+        %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total: <%= suma %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

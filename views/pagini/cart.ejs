@@ -1,0 +1,32 @@
+<%- include('../fragmente/header') %>
+
+<main id="cart-page" class="page-content container">
+  <%- include('../fragmente/watermark') %>
+
+  <section class="cart-empty-container d-none">
+    <h1 style="font: 32px;">Cosul tau este gol.</h1>
+  </section>
+
+  <!-- se randeaza dinamic din cart.js -->
+  <div class="cart">
+    <section class="products"></section>
+    <div class="totals">Pret total: <span class="pret"></span></div>
+    <button type="button" id="buy-products" class="btn btn-success">Cumpara</button>
+  </div>
+
+  <template class="product-template">
+    <h3 class="nume-title">Nume: <span class="nume"></span></h3>
+    <h3 class="pret-title">Pret: <span class="pret"></span></h3>
+    <h3 class="cantitate-title">Cantitate: <span class="cantitate"></span></h3>
+
+    <h3 class="brand-title">Brand: <span class="brand"></span></h3>
+    <h3 class="tva-title">TVA inclus: <span class="tva"></span></h3>
+    <h3 class="categorie-title">Categorie: <span class="categorie"></span></h3>
+    <h3 class="descriere-title">Descriere: <span class="descriere"></span></h3>
+
+    <button class="delete-product btn btn-danger" type="button">Delete product</button>
+    <hr>
+  </template>
+</main>
+
+<%- include('../fragmente/footer', { hasJSfile: true, JSfiles: ['cart'] }) %>

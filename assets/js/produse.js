@@ -141,3 +141,65 @@ const calcSumaPreturi = () => {
   }, 2000);
 };
 calcSumaPreturi();
+
+function addToCart(id) {
+  const productID = parseInt(id);
+  const input = document.querySelector('#cantitate-prod-' + id);
+  const cantitate = input.value ? parseInt(input.value) : 1;
+  input.value = '';
+
+  let cart = null;
+  if (!localStorage.getItem('cart')) {
+    cart = [{ productID, cantitate }];
+  } else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+
+    const getExistingProduct = cart.filter((e) => e.productID == productID);
+    if (getExistingProduct.length) {
+      let productIndex = null;
+      cart.forEach((product, index) => {
+        if (product.productID == getExistingProduct[0].productID) {
+          productIndex = index;
+          return;
+        }
+      });
+      cart[productIndex].cantitate += cantitate;
+    } else {
+      cart.push({ productID, cantitate });
+    }
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  window.location.reload();
+}
+document.querySelectorAll('.add-to-cart-btn').forEach((input) => {
+  input.addEventListener('click', () => addToCart(input.dataset.productid));
+});
+
+// show remove from cart btn if item exists in cart
+document.querySelectorAll('.remove-from-cart-btn').forEach((btn) => {
+  let cart = null;
+  if (JSON.parse(localStorage.getItem('cart'))) {
+    cart = JSON.parse(localStorage.getItem('cart'));
+  }
+
+  if (cart.filter((e) => e.productID == btn.dataset.productid).length) btn.classList.remove('d-none');
+
+  btn.addEventListener('click', () => removeFromCart(btn.dataset.productid));
+});
+
+function removeFromCart(id) {
+  let cart = null;
+  if (JSON.parse(localStorage.getItem('cart'))) {
+    cart = JSON.parse(localStorage.getItem('cart'));
+  }
+
+  let indexToDelete = null;
+  cart.forEach((prod, index) => {
+    if (prod.productID == id) indexToDelete = index;
+  });
+  cart.splice(indexToDelete, 1);
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  window.location.reload();
+}

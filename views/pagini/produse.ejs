@@ -192,6 +192,15 @@
                   <span class="bold">Descriere:</span>
                   <%= produs.descriere %>
                 </div>
+
+                <% if(produs.cantitate) { %>
+                  <div class="add-to-cart d-flex flex-column">
+                    <label for="cantitate-prod-<%= produs.id %>" class="text-center">Alege cantitatea:</label>
+                    <input type="number" id="cantitate-prod-<%= produs.id %>" oninput="if(parseInt(this.value) > parseInt(this.max)) this.value = this.max; else if (parseInt(this.value) <= 0) this.value = this.min; " min="1" max="<%= produs.cantitate %>" class="w-100" style="margin:10px 0; outline: none;">
+                    <button type="button" class="add-to-cart-btn btn" data-productID="<%= produs.id %>">Add</button>
+                    <button type="button" class="remove-from-cart-btn btn d-none" data-productID="<%= produs.id %>">Remove from cart</button>
+                  </div>
+                <% } %>
               </div>
             </div>
           </article>

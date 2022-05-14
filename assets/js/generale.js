@@ -11,7 +11,7 @@ const deleteUserBtns = usersPage?.querySelectorAll('.delete-user');
 
 deleteUserBtns?.forEach((btn) => {
   btn.addEventListener('click', () => {
-    fetch(`http://localhost:8080/utilizatori/${btn.dataset.userid}`, {
+    fetch(`${window.location.origin}/utilizatori/${btn.dataset.userid}`, {
       method: 'DELETE',
     })
       .then((res) => {
