@@ -4,21 +4,21 @@
   <input type="checkbox" name="toggle-menu-input" id="toggle-menu-input" hidden />
   <nav class="nav">
     <ul class="nav-list">
-      <li class="first-child home-tab">
+      <li class="first-child home-tab <%= locals.page && locals.page == '/index' ? 'active' : '' %>">
         <div class="home-text">Acasa</div>
         <i class="fa-solid fa-house home-icon selector"></i>
         <ul>
-          <li><a href="/#prezentare">Ultimul produs</a></li>
-          <li><a href="/#orar">Orar</a></li>
-          <li><a href="/#evenimente">Evenimente</a></li>
-          <li><a href="/#anunturi">Anunturi</a></li>
-          <li><a href="/#utilizatori-online">Utilizatori Online</a></li>
-          <li><a href="/#informatii-utilizator">Despre mine</a></li>
-          <li><a href="/#informatii-site">Despre noi</a></li>
-          <li><a href="/#sponsori">Sponsori</a></li>
+          <li><a href="/#prezentare" onclick="this.scrollIntoView()">Ultimul produs</a></li>
+          <li><a href="/#orar" onclick="this.scrollIntoView()">Orar</a></li>
+          <li><a href="/#evenimente" onclick="this.scrollIntoView()">Evenimente</a></li>
+          <li><a href="/#anunturi" onclick="this.scrollIntoView()">Anunturi</a></li>
+          <li><a href="/#utilizatori-online" onclick="this.scrollIntoView()">Utilizatori Online</a></li>
+          <li><a href="/#informatii-utilizator" onclick="this.scrollIntoView()">Despre mine</a></li>
+          <li><a href="/#informatii-site" onclick="this.scrollIntoView()">Despre noi</a></li>
+          <li><a href="/#sponsori" onclick="this.scrollIntoView()">Sponsori</a></li>
         </ul>
       </li>
-      <li class="first-child">
+      <li class="first-child <%= locals.page && locals.page == '/produse' ? 'active' : '' %>">
         <a href="/produse" class="selector">Produse</a>
         <ul>
           <li><a href="/produse">Toate</a></li>
@@ -29,11 +29,11 @@
       </li>
       
       <% if(!locals.user) { %>
-        <li class="first-child">
+        <li class="first-child <%= locals.page && locals.page == '/inregistrare' ? 'active' : '' %>">
           <a href="/inregistrare" class="selector">Inregistrare</a>
         </li>
       <% } %>
-      <li class="first-child">
+      <li class="first-child <%= locals.page && (locals.page == '/profil' || locals.page == '/login') ? 'active' : '' %>">
         <% if(locals.user) { %>
           <div class="user">
             <a href="/profil">
@@ -52,14 +52,14 @@
         <% } %>
       </li>
       <% if(locals.user?.rol == 'admin') { %>
-        <li class="first-child">
+        <li class="first-child <%= locals.page && locals.page == '/utilizatori' ? 'active' : '' %>">
           <a href="/utilizatori" class="selector">Utilizatori</a>
         </li>
       <% } %>
-      <li class="first-child">
+      <li class="first-child <%= locals.page && locals.page == '/contact' ? 'active' : '' %>">
         <a href="/contact" class="selector">Contact</a>
       </li>
-      <li class="first-child">
+      <li class="first-child <%= locals.page && locals.page == '/cart' ? 'active' : '' %>">
         <a href="/cart" class="selector">Cos</a>
       </li>
     </ul>

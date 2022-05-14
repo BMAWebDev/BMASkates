@@ -11,7 +11,7 @@ global.rootProjectLocation = __dirname;
 
 global.protocol = process.env.SITE_ONLINE ? 'https' : 'http';
 global.domain = process.env.SITE_ONLINE ? 'bmaskates.herokuapp.com' : 'localhost';
-global.port = process.env.PORT || 8080;
+global.port = process.env.SITE_ONLINE ? null : 8080;
 
 server.set('view engine', 'ejs');
 
@@ -34,5 +34,5 @@ server.use(
 // ruteaza tot
 server.use('/', router);
 
-const PORT = global.port;
+const PORT = process.env.PORT || 8080;
 server.listen(PORT, (_) => console.log(`Serverul este deschis la adresa: http://localhost:${PORT}/`));

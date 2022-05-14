@@ -5,8 +5,18 @@ const { acasa, contact, produse, produs, user, api } = require('./routes');
 
 const router = Router();
 
+const extra = require('./assets/json/extra.json');
+router.use('*', (req, res, next) => {
+  if (extra.mentenanta) {
+    res.render('pagini/mentenanta', {
+      page: '/mentenanta',
+    });
+  } else next();
+});
+
 router.use(setGlobalLocals);
 router.use(setQRCodes);
+
 module.exports = router;
 
 // utilizeaza instantele definite

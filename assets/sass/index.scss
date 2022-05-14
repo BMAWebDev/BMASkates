@@ -136,6 +136,14 @@
           }
         }
       }
+
+      @media screen and (max-width: 700px) {
+        width: auto;
+
+        iframe {
+          width: 100%;
+        }
+      }
     }
 
     @media print {
@@ -183,6 +191,10 @@
       'utilizatori-online utilizatori-online utilizatori-online'
       'informatii-utilizator informatii-utilizator informatii-utilizator'
       'video-section video-section video-section';
+
+    section {
+      margin: 20px 0;
+    }
   }
 }
 

@@ -5,6 +5,24 @@
   color: #fff;
   width: 100%;
 }
+#page-header .active {
+  background: #b7d436;
+}
+#page-header .user {
+  width: max-content;
+}
+#page-header .user #logout {
+  display: none;
+}
+#page-header .user:hover #logout {
+  display: block;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  #page-header .user {
+    margin: 0 auto;
+  }
+}
 #page-header .nav {
   display: flex;
   justify-content: space-between;
@@ -31,6 +49,7 @@
   padding: 15px;
   text-shadow: 1px -50px 2px;
   transition: text-shadow 0.7s;
+  text-transform: capitalize;
 }
 #page-header .nav .nav-list li.first-child:hover {
   background: #e09a07;
@@ -53,6 +72,7 @@
   text-shadow: none;
   background: #e34720;
   transition: background 1s;
+  text-transform: capitalize;
 }
 #page-header .nav .nav-list li.first-child ul li:hover {
   text-decoration: underline;
@@ -104,6 +124,11 @@
 }
 #page-header .nav .logo-container .logo {
   margin: 15px;
+}
+@media screen and (max-width: 768px) {
+  #page-header .nav .logo-container {
+    display: none;
+  }
 }
 #page-header #toggle-menu-input:checked + .nav {
   display: flex;
@@ -178,9 +203,21 @@
   }
 }
 
+#page-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 15px;
+  margin-top: 25px;
+  box-shadow: 1px -6px 9px -4px #e34720;
+}
 @media print {
   #page-footer {
     page-break-before: always;
+  }
+}
+@media screen and (max-width: 768px) {
+  #page-footer {
+    flex-direction: column;
   }
 }
 
@@ -198,6 +235,26 @@
   * {
     font-size: 14px;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+}
+
+dl,
+ol,
+ul {
+  margin-bottom: inherit;
+  padding-left: inherit;
+}
+
+p {
+  margin-bottom: inherit;
 }
 
 .page-content {
@@ -221,14 +278,19 @@
   }
 }
 
-a {
+a,
+a[href] {
   text-decoration: none;
   color: inherit;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 #acasa {
   display: grid;
-  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site utilizatori-online informatii-utilizator" "video-section video-section video-section";
+  grid-template-areas: "prezentare prezentare prezentare" "evenimente orar anunturi" "legends legends legends" "informatii-site utilizatori-online informatii-utilizator" "video-section video-section video-section";
 }
 #acasa #prezentare {
   grid-area: prezentare;
@@ -314,9 +376,6 @@ a {
 #acasa #informatii-site {
   grid-area: informatii-site;
 }
-#acasa #sponsori {
-  grid-area: sponsori;
-}
 #acasa #legends {
   grid-area: legends;
   margin: 50px 0;
@@ -344,6 +403,14 @@ a {
 #acasa #legends .iframe-container .toggle-buttons .toggle-btn:hover {
   background: #fff;
 }
+@media screen and (max-width: 700px) {
+  #acasa #legends .iframe-container {
+    width: auto;
+  }
+  #acasa #legends .iframe-container iframe {
+    width: 100%;
+  }
+}
 @media print {
   #acasa #legends {
     display: none;
@@ -369,7 +436,10 @@ a {
 }
 @media screen and (max-width: 768px) {
   #acasa {
-    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "sponsori sponsori sponsori" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator" "video-section video-section video-section";
+    grid-template-areas: "prezentare prezentare prezentare" "evenimente evenimente evenimente" "orar orar orar" "anunturi anunturi anunturi" "legends legends legends" "informatii-site informatii-site informatii-site" "utilizatori-online utilizatori-online utilizatori-online" "informatii-utilizator informatii-utilizator informatii-utilizator" "video-section video-section video-section";
+  }
+  #acasa section {
+    margin: 20px 0;
   }
 }
 

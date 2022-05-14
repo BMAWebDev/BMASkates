@@ -8,9 +8,9 @@ const client = new Client({
   database: process.env.databaseDB,
   host: process.env.hostDB,
   port: process.env.portDB,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
 });
 client.connect();
 

@@ -7,6 +7,10 @@
   color: #fff;
   width: 100%;
 
+  .active {
+    background: #b7d436;
+  }
+
   .user {
     width: max-content;
 
@@ -19,6 +23,10 @@
         display: block;
         cursor: pointer;
       }
+    }
+
+    @media screen and (max-width: 768px) {
+      margin: 0 auto;
     }
   }
 

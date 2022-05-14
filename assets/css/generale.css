@@ -5,6 +5,9 @@
   color: #fff;
   width: 100%;
 }
+#page-header .active {
+  background: #b7d436;
+}
 #page-header .user {
   width: max-content;
 }
@@ -14,6 +17,11 @@
 #page-header .user:hover #logout {
   display: block;
   cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  #page-header .user {
+    margin: 0 auto;
+  }
 }
 #page-header .nav {
   display: flex;
@@ -205,6 +213,11 @@
 @media print {
   #page-footer {
     page-break-before: always;
+  }
+}
+@media screen and (max-width: 768px) {
+  #page-footer {
+    flex-direction: column;
   }
 }
 
