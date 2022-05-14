@@ -3,11 +3,14 @@ require('dotenv').config();
 const { Client } = require('pg');
 
 const client = new Client({
-  user: process.env.user,
-  password: process.env.password,
-  database: process.env.database,
-  host: process.env.host,
-  port: process.env.port,
+  user: process.env.userDB,
+  password: process.env.passwordDB,
+  database: process.env.databaseDB,
+  host: process.env.hostDB,
+  port: process.env.portDB,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 client.connect();
 

@@ -8,8 +8,10 @@ require('dotenv').config();
 
 // seteaza calea catre proiect global
 global.rootProjectLocation = __dirname;
-global.protocol = process.env.protocol;
-global.domain = process.env.domain;
+
+global.protocol = process.env.SITE_ONLINE ? 'https' : 'http';
+global.domain = process.env.SITE_ONLINE ? 'bmaskates.herokuapp.com' : 'localhost';
+global.port = process.env.PORT || 8080;
 
 server.set('view engine', 'ejs');
 
@@ -32,5 +34,5 @@ server.use(
 // ruteaza tot
 server.use('/', router);
 
-const PORT = 8080;
+const PORT = global.port;
 server.listen(PORT, (_) => console.log(`Serverul este deschis la adresa: http://localhost:${PORT}/`));
