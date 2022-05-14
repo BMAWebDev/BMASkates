@@ -1,6 +1,6 @@
 if (!JSON.parse(localStorage.getItem('cart'))?.length) {
   document.querySelector('.cart-empty-container').classList.remove('d-none');
-  document.querySelector('.products').classList.add('d-none');
+  document.querySelector('.cart').classList.add('d-none');
 } else {
   const cart = JSON.parse(localStorage.getItem('cart'));
 
