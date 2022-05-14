@@ -10,7 +10,7 @@
       #tabl {
         border-collapse: collapse;
       }
-      tr {
+      tr.product {
         counter-increment: cnt;
       }
       #tabl td,
@@ -22,11 +22,13 @@
         color: red;
       }
       #tabl::after {
-        content: 'Numar produse' counter(cnt);
-        display: block;
+        content: 'Numar produse: ' counter(cnt);
+        display: inline-block;
+        width: 120px;
+        margin: 15px 0;
       }
     </style>
-    <link rel="stylesheet" href="<%= locals.protocol %>://<%= locals.domeniu %>/assets/css/factura.css" type="text/css" />
+    <link rel="stylesheet" href="<%= locals.protocol %>://<%= locals.domeniu %>:8080/assets/css/factura.css" type="text/css" />
   </head>
   <body>
     <h1>Factură BMASkates</h1>
@@ -54,16 +56,20 @@
           for (let prod of locals.produse) { 
             suma += parseFloat(prod.produs.pret) * parseInt(prod.cantitate); 
             %>
-            <tr>
-              <td> 
+            <tr class="product">
+              <td>
+                <img width="64" height="64" src="<%= `${locals.protocol}://${locals.domeniu}:8080` + '/img/produse/' + prod.produs.imagine %>" alt="">  
               </td>
               <td><%= prod.produs.nume %></td>
               <td><%= prod.produs.pret %></td>
               <td><%= prod.cantitate %></td>
               <td><%= prod.produs.brand %></td>
-              <td><%= prod.produs.tva %></td>
+              <td><%= prod.produs.tva ? 'Da' : 'Nu' %></td>
               <td><%= prod.produs.categorie %></td>
               <td><%= prod.produs.descriere %></td>
+              <td>
+                <img width="64" height="64" src="<%= `${locals.protocol}://${locals.domeniu}:8080/img/qrcode/` + prod.produs.id + '.png' %>" alt="">  
+              </td>
             </tr>
           <% 
           } 
@@ -75,5 +81,9 @@
         </tr>
       </tfoot>
     </table>
+
+    <div class="qr-produse">
+      <img width="128" height="128" src="<%= `${locals.protocol}://${locals.domeniu}:8080/img/qrcode/qr-produse.png` %>" alt="">  
+    </div>
   </body>
 </html>

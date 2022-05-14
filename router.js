@@ -1,11 +1,12 @@
 const { Router } = require('express');
-const { errorHandler, setGlobalLocals } = require('./middleware');
+const { errorHandler, setGlobalLocals, setQRCodes } = require('./middleware');
 const { Restul } = require('./controllers');
 const { acasa, contact, produse, produs, user, api } = require('./routes');
 
 const router = Router();
 
 router.use(setGlobalLocals);
+router.use(setQRCodes);
 module.exports = router;
 
 // utilizeaza instantele definite

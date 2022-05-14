@@ -1,7 +1,7 @@
 const { db } = require('../../db');
 const { sendInvoiceEmail } = require('../../functions');
-const html_to_pdf = require('html-pdf-node');
-const juice = require('juice');
+// const html_to_pdf = require('html-pdf-node');
+var pdf = require('html-pdf');
 const ejs = require('ejs');
 const fs = require('fs');
 
@@ -43,49 +43,18 @@ module.exports = async (req, res) => {
             domeniu: global.domain,
           });
 
-          const file = { content: juice(factura, { inlinePseudoElements: true }) };
-          const options = { format: 'A4', args: ['--no-sandbox', '--disable-extensions', '--disable-setuid-sandbox'] };
+          const options = { format: 'A4' };
 
-          try {
-            const buffer = await html_to_pdf.generatePdf(file, options);
-            console.log('buff', buffer);
-            res.json({ message: 'all good' });
-          } catch (err) {
-            console.log('err', err);
-            res.json({ err });
-          }
-
-          // res.json({ message: 'all good' });
+          const fileLocation = global.rootProjectLocation + '/assets/facturi/test.pdf';
+          pdf.create(factura, options).toFile(fileLocation, (err, rez) => {
+            if (err) res.json({ err: 400 });
+            else {
+              sendInvoiceEmail(req.session.user.email, fileLocation);
+              res.json({ message: 'all good' });
+            }
+          });
         }
       });
-
-      // const file = { content: juice(factura, { inlinePseudoElements: true }) };
-      // const options = { format: 'A4', args: ['--no-sandbox', '--disable-extensions', '--disable-setuid-sandbox'] };
-
-      // try {
-      //   const buffer = await html_to_pdf.generatePdf(file, options);
-      //   console.log(buffer);
-      //   res.json({ message: 'all good' });
-      // } catch (err) {
-      //   console.log(err);
-      //   res.json({ err });
-      // }
-
-      // // if (buffer) res.json({ message: 'all good' });
-      // // else res.json({ message: 'sss' });
-
-      // // html_to_pdf.generatePdf(file, options).then((pdf) => {
-      // //   console.log(' all good');
-      // //   // if (!fs.existsSync(global.rootProjectLocation + '/assets/facturi')) fs.mkdirSync(global.rootProjectLocation + '/assets/facturi');
-
-      // //   // const fileName = global.rootProjectLocation + '/assets/facturi/test' + new Date().getTime() + '.pdf';
-
-      // //   // fs.writeFileSync(fileName, pdf);
-
-      // //   // sendInvoiceEmail(req.session.user.email, fileName);
-
-      // //   res.json({ message: 'all good' });
-      // // });
     }
   }
 };
