@@ -2,6 +2,7 @@ const express = require('express');
 const server = express();
 const router = require('./router');
 const session = require('express-session');
+const helmet = require('helmet');
 
 require('dotenv').config();
 
@@ -16,6 +17,8 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
 server.use(express.static('assets'));
+
+server.use(helmet.frameguard()); // prevent iframe
 
 // pentru req.session
 server.use(

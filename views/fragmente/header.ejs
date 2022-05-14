@@ -27,9 +27,12 @@
           <% } %>
         </ul>
       </li>
-      <li class="first-child">
-        <a href="/inregistrare" class="selector">Inregistrare</a>
-      </li>
+      
+      <% if(!locals.user) { %>
+        <li class="first-child">
+          <a href="/inregistrare" class="selector">Inregistrare</a>
+        </li>
+      <% } %>
       <li class="first-child">
         <% if(locals.user) { %>
           <div class="user">
